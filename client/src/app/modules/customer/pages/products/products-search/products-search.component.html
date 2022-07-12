@@ -1,0 +1,33 @@
+<div class="search-container">
+  <div class="primary-actions">
+    <form class="form" [formGroup]="form">
+      <div class="search-input">
+        <mat-form-field
+          class="form-field"
+          appearance="outline"
+          floatLabel="never"
+          floatPlaceholder="never"
+        >
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-label>Search products</mat-label>
+          <input
+            matInput
+            id="searchTerm"
+            name="searchTerm"
+            formControlName="searchTerm"
+          />
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="secondary-actions">
+    <mat-button-toggle-group class="button-toggle-group">
+      <mat-button-toggle value="grid" matTooltip="Grid view">
+        <mat-icon>grid_view</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="table" matTooltip="Table view">
+        <mat-icon>table_rows</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>

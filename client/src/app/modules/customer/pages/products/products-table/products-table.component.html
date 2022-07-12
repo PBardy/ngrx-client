@@ -1,0 +1,146 @@
+<table
+  class="table"
+  matSort
+  mat-table
+  matSortActive="created"
+  matSortDisableClear
+  matSortDirection="desc"
+  [dataSource]="dataSource"
+  [trackBy]="trackProductByUuid"
+>
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? toggleAllRows() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      >
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>
+      <span class="id">#</span>
+    </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <span class="id">{{ i + 1 }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th width="100%" mat-header-cell mat-sort-header *matHeaderCellDef>
+      <span class="name">Name</span>
+    </th>
+    <td width="100%" mat-cell *matCellDef="let element">
+      <div class="name-cell" (click)="viewProduct(element)">
+        <a class="name-link">{{ element.name | titlecase }}</a>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      <span class="price">Price</span>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <span class="price">{{ element.price | currency }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+      <span class="status">Status</span>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <div class="status">
+        <mat-chip-list>
+          <mat-chip
+            class="chip"
+            [class.bad]="isUnavailable(element)"
+            [class.good]="isAvailable(element)"
+          >
+            <span>{{ element.availability }}</span>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Options Column -->
+  <ng-container matColumnDef="options" stickyEnd>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button [matMenuTriggerFor]="selectAllMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #selectAllMenu>
+        <ng-container *ngIf="!selection.isEmpty()">
+          <button mat-menu-item (click)="addProductsToCart()">
+            <mat-icon>add</mat-icon>
+            <span>Add products to cart</span>
+          </button>
+        </ng-container>
+      </mat-menu>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="selectItemMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #selectItemMenu>
+        <button mat-menu-item (click)="viewProduct(element)">
+          <mat-icon>visibility</mat-icon>
+          <span>View Product</span>
+        </button>
+        <ng-container *ngIf="canPurchaseProduct(element)">
+          <button mat-menu-item (click)="addProductToCart(element)">
+            <mat-icon>add</mat-icon>
+            <span>Add to cart</span>
+          </button>
+          <ng-container *ngIf="shoppingLists$ | async as shoppingLists">
+            <button mat-menu-item [mat-menu-trigger-for]="shoppingListMenu">
+              <mat-icon>chevron_left</mat-icon>
+              <span>Add to shopping list</span>
+
+              <mat-menu #shoppingListMenu>
+                <ng-container *ngFor="let shoppingList of shoppingLists">
+                  <button
+                    mat-menu-item
+                    (click)="addProductToShoppingList(shoppingList, element)"
+                  >
+                    <mat-icon matPrefix>description</mat-icon>
+                    <span>{{ shoppingList.name }}</span>
+                  </button>
+                </ng-container>
+              </mat-menu>
+            </button>
+          </ng-container>
+        </ng-container>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr
+    mat-row
+    class="row"
+    *matRowDef="let row; columns: columns"
+    [class.selected]="selection.isSelected(row)"
+    (dblclick)="selection.toggle(row)"
+  ></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons>
+</mat-paginator>

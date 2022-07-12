@@ -1,0 +1,24 @@
+$toolbar-height: 60px;
+
+.wrapper {
+  height: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.header {
+  height: $toolbar-height;
+}
+
+.nav {
+  height: 100%;
+}
+
+.footer {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  padding: 0.75rem 1rem;
+}

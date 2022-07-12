@@ -1,0 +1,54 @@
+<ng-container *ngIf="cart$ | async as cart">
+  <form class="form" [formGroup]="form">
+    <header class="header">
+      <h3>Order Summary</h3>
+    </header>
+    <section class="section">
+      <div class="items-summary">
+        <label>Items {{ cart.length }}</label>
+        <label>{{ cartCost$ | async | currency }}</label>
+      </div>
+      <div class="form-control">
+        <label>Shipping</label>
+        <mat-form-field appearance="outline">
+          <mat-label>Shipping method</mat-label>
+          <mat-select formControlName="shippingMethod">
+            <ng-container *ngIf="shippingMethods$ | async as shippingMethods">
+              <ng-container *ngFor="let shippingMethod of shippingMethods">
+                <mat-option [value]="shippingMethod">
+                  <span>
+                    {{ shippingMethod.name }} -
+                    {{ shippingMethod.price | currency }}
+                  </span>
+                </mat-option>
+              </ng-container>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-control">
+        <label>Promo Code</label>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            id="promoCode"
+            name="promoCode"
+            formControlName="promoCode"
+          />
+        </mat-form-field>
+        <button class="btn btn-accent" mat-ripple>
+          <span>Apply</span>
+        </button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="cost-summary">
+        <label>Total Cost</label>
+        <label>{{ cartCost$ | async | currency }}</label>
+      </div>
+      <button class="btn btn-primary" mat-ripple (click)="onSubmit()">
+        <span>Checkout</span>
+      </button>
+    </section>
+  </form>
+</ng-container>

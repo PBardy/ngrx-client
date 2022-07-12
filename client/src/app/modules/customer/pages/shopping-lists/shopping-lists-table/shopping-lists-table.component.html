@@ -1,0 +1,107 @@
+<table
+  class="table"
+  matSort
+  mat-table
+  matSortActive="created"
+  matSortDisableClear
+  matSortDirection="desc"
+  [dataSource]="dataSource"
+>
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? toggleAllRows() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      >
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>
+      <span class="id">#</span>
+    </th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <span class="id">{{ i + 1 }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th width="100%" mat-header-cell mat-sort-header *matHeaderCellDef>
+      <span class="name">Name</span>
+    </th>
+    <td width="100%" mat-cell *matCellDef="let element">
+      <div class="name-cell" (click)="viewShoppingList(element)">
+        <a class="name-link">{{ element.name | titlecase }}</a>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Options Column -->
+  <ng-container matColumnDef="options" stickyEnd>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button [matMenuTriggerFor]="selectAllMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #selectAllMenu>
+        <button mat-menu-item (click)="createShoppingList()">
+          <mat-icon matPrefix>add</mat-icon>
+          <span>Create shopping list</span>
+        </button>
+        <ng-container *ngIf="!selection.isEmpty()">
+          <button mat-menu-item (click)="duplicateShoppingLists()">
+            <mat-icon matPrefix>content_copy</mat-icon>
+            <span>Duplicate shopping lists</span>
+          </button>
+          <button mat-menu-item (click)="deleteShoppingLists()">
+            <mat-icon matPrefix>delete</mat-icon>
+            <span>Delete shopping lists</span>
+          </button>
+        </ng-container>
+      </mat-menu>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="selectItemMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #selectItemMenu>
+        <button mat-menu-item (click)="duplicateShoppingList(element)">
+          <mat-icon>content_copy</mat-icon>
+          <span>Duplicate shopping list</span>
+        </button>
+        <button mat-menu-item (click)="editShoppingList(element)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit shopping list</span>
+        </button>
+        <button mat-menu-item (click)="deleteShoppingList(element)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete shopping list</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr
+    mat-row
+    class="row"
+    *matRowDef="let row; columns: columns"
+    [class.selected]="selection.isSelected(row)"
+    (dblclick)="selection.toggle(row)"
+  ></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons>
+</mat-paginator>

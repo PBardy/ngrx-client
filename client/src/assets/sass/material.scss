@@ -1,0 +1,21 @@
+::ng-deep .mat-menu-item .mat-menu-submenu-icon {
+  display: none;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0 0 !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+.chip.bad {
+  color: var(--red-1);
+  background-color: var(--light-red-1);
+}
+
+.chip.good {
+  color: var(--green-1);
+  background-color: var(--light-green-1);
+}

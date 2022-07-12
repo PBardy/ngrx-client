@@ -1,0 +1,12 @@
+<div class="card" [class.selected]="isSelected">
+  <div class="card-inner">
+    <div class="card-image">
+      <ng-container [ngSwitch]="userType.tag">
+        <mat-icon class="icon" *ngSwitchCase="'ADMIN'">build</mat-icon>
+        <mat-icon class="icon" *ngSwitchCase="'SELLER'">store</mat-icon>
+        <mat-icon class="icon" *ngSwitchCase="'CUSTOMER'">person</mat-icon>
+      </ng-container>
+    </div>
+    <h3>{{ userType.name | titlecase }}</h3>
+  </div>
+</div>

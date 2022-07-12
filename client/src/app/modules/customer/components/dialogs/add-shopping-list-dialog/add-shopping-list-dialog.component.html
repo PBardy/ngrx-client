@@ -1,0 +1,35 @@
+<main class="main">
+  <header class="header">
+    <h3>Create a new shopping list</h3>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+  <article class="article">
+    <form class="form" [formGroup]="form">
+      <mat-form-field
+        appearance="outline"
+        floatLabel="never"
+        floatPlaceholder="never"
+      >
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          id="name"
+          name="name"
+          placeholder="Shopping list name"
+          formControlName="name"
+        />
+        <mat-error>Name is required</mat-error>
+      </mat-form-field>
+    </form>
+  </article>
+  <footer class="footer">
+    <button class="btn btn-secondary" mat-ripple mat-dialog-close>
+      <span>Cancel</span>
+    </button>
+    <button class="btn btn-primary" mat-ripple (click)="onCreate()">
+      <span>Create</span>
+    </button>
+  </footer>
+</main>

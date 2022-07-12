@@ -1,0 +1,28 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row class="toolbar-row">
+    <div class="toolbar-group">
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h6>Customer portal</h6>
+    </div>
+    <div class="toolbar-group">
+      <button mat-icon-button routerLink="/user/customer/cart">
+        <ng-container *ngIf="cart$ | async as cart; else normal">
+          <mat-icon [matBadge]="cart.length" [matBadgeHidden]="!cart.length">
+            shopping_cart
+          </mat-icon>
+        </ng-container>
+        <ng-template #normal>
+          <mat-icon>shopping_cart</mat-icon>
+        </ng-template>
+      </button>
+      <button mat-icon-button routerLink="/user/customer/my/notifications">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

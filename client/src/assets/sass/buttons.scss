@@ -1,0 +1,33 @@
+.btn {
+  border: 0;
+  outline: 0;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  will-change: background-color;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+  color: var(--white-1);
+  background-color: var(--blue-1);
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.btn-primary span {
+  letter-spacing: 1px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+}
+
+.btn-primary:not(:disabled):hover {
+  background-color: var(--blue-2);
+}
+
+.btn-pill {
+  border-radius: 25px;
+}

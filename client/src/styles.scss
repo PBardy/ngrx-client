@@ -1,0 +1,30 @@
+@import "fonts";
+@import "buttons";
+@import "pallette";
+@import "typography";
+@import "material";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+a {
+  color: var(--blue-1);
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  outline: 0;
+}

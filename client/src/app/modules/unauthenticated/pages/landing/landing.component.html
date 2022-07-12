@@ -1,0 +1,52 @@
+<div class="wrapper">
+  <div class="content">
+    <header class="header">
+      <h1>Select user type</h1>
+    </header>
+    <article class="article">
+      <section class="tiles">
+        <ng-container *ngIf="userTypes$ | async as userTypes">
+          <ng-container *ngFor="let userType of userTypes">
+            <app-landing-user-type-card
+              class="user-type-card"
+              [userType]="userType"
+              [isSelected]="selectionModel.isSelected(userType)"
+              (click)="selectionModel.toggle(userType)"
+            ></app-landing-user-type-card>
+          </ng-container>
+        </ng-container>
+      </section>
+      <section class="tile-description">
+        <ng-container *ngIf="selected; else default">
+          <p>{{ selected.description }}</p>
+        </ng-container>
+        <ng-template #default>
+          <p>
+            Your user type determines what dashboard you'll see once you've
+            logged in. Different user types have different permissions, admin
+            and seller accounts require additional authentication before use.
+          </p>
+        </ng-template>
+      </section>
+    </article>
+    <footer class="footer">
+      <button
+        matRipple
+        class="btn btn-primary btn-pill"
+        [disabled]="!selected"
+        (click)="signIn()"
+      >
+        <span>Sign In</span>
+      </button>
+      <h4>or</h4>
+      <button
+        matRipple
+        class="btn btn-primary btn-pill"
+        [disabled]="!selected"
+        (click)="signUp()"
+      >
+        <span>Sign Up</span>
+      </button>
+    </footer>
+  </div>
+</div>

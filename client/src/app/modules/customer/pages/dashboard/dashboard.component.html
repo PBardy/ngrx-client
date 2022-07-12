@@ -1,0 +1,16 @@
+<mat-drawer-container class="drawer-container">
+  <mat-drawer class="drawer" mode="side" [opened]="true">
+    <app-drawer></app-drawer>
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content">
+    <app-toolbar></app-toolbar>
+    <main class="main">
+      <section class="section">
+        <router-outlet></router-outlet>
+      </section>
+      <footer class="footer">
+        <div>Info bar</div>
+      </footer>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,29 @@
+@import "material";
+
+.table {
+  width: 100%;
+}
+
+.id,
+.price,
+.status {
+  padding: 0 2rem;
+}
+
+.name-cell {
+  width: 100%;
+  display: flex;
+}
+
+.name-link {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.name-link:hover {
+  text-decoration: underline;
+}
+
+.row {
+  cursor: pointer;
+}

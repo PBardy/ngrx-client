@@ -1,0 +1,19 @@
+<ng-container *ngIf="cart$ | async as cart">
+  <ng-container *ngIf="cart.length; else cartEmpty">
+    <section class="section">
+      <article class="article">
+        <header class="header">
+          <h3>Shopping Cart</h3>
+          <h3>{{ cart.length }} Items</h3>
+        </header>
+        <app-cart-table></app-cart-table>
+      </article>
+      <aside class="aside">
+        <app-cart-checkout></app-cart-checkout>
+      </aside>
+    </section>
+  </ng-container>
+  <ng-template #cartEmpty>
+    <app-cart-empty></app-cart-empty>
+  </ng-template>
+</ng-container>

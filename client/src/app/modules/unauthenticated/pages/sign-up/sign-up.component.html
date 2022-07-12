@@ -1,0 +1,129 @@
+<div class="wrapper">
+  <div class="content">
+    <aside class="aside">
+      <form class="form" [formGroup]="form" (ngSubmit)="signUp()">
+        <header class="form-header">
+          <h2>Get started</h2>
+          <p>
+            Don't have an account?
+            <a href="javascript:void(0)" (click)="signIn()">Sign in here</a>
+          </p>
+          <div class="social-buttons">
+            <app-social-buttons></app-social-buttons>
+          </div>
+        </header>
+        <div class="form-groups">
+          <div class="form-group">
+            <label>First name</label>
+            <mat-form-field
+              class="form-field"
+              appearance="outline"
+              floatLabel="never"
+              floatPlaceholder="never"
+            >
+              <mat-icon matPrefix>person</mat-icon>
+              <mat-label class="form-label">First name</mat-label>
+              <input
+                matInput
+                id="firstName"
+                name="firstName"
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+                autocapitalize="never"
+                autocomplete="given-name"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label>Last name</label>
+            <mat-form-field
+              class="form-field"
+              appearance="outline"
+              floatLabel="never"
+              floatPlaceholder="never"
+            >
+              <mat-icon matPrefix>person</mat-icon>
+              <mat-label class="form-label">Last name</mat-label>
+              <input
+                matInput
+                id="lastName"
+                name="lastName"
+                type="text"
+                class="form-control"
+                formControlName="lastName"
+                autocapitalize="never"
+                autocomplete="family-name"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <mat-form-field
+            class="form-field"
+            appearance="outline"
+            floatLabel="never"
+            floatPlaceholder="never"
+          >
+            <mat-icon matPrefix>email</mat-icon>
+            <mat-label class="form-label">Email</mat-label>
+            <input
+              matInput
+              id="email"
+              name="email"
+              type="email"
+              class="form-control"
+              formControlName="email"
+              autocapitalize="never"
+              autocomplete="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <mat-form-field
+            class="form-field"
+            appearance="outline"
+            floatLabel="never"
+            floatPlaceholder="never"
+          >
+            <mat-icon matPrefix>lock</mat-icon>
+            <mat-label class="form-label">Password</mat-label>
+            <input
+              matInput
+              id="password"
+              name="password"
+              type="password"
+              class="form-control"
+              formControlName="password"
+              autocapitalize="never"
+              autocomplete="current-password"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <mat-checkbox class="checkbox">
+          I agree to the <a href="">terms and conditions</a> and
+          <a href="">cookie policy</a>
+        </mat-checkbox>
+        <footer class="form-footer">
+          <button class="btn btn-primary" type="submit" matRipple>
+            <ng-container *ngIf="authState$ | async as authState; else default">
+              <ng-container *ngIf="authState.loading; else default">
+                <mat-spinner [diameter]="25"></mat-spinner>
+              </ng-container>
+            </ng-container>
+            <ng-template #default>
+              <span>Sign Up</span>
+            </ng-template>
+          </button>
+        </footer>
+      </form>
+    </aside>
+    <article class="article"></article>
+  </div>
+</div>
