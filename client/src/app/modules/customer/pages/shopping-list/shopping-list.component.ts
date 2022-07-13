@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IAppState } from '@interfaces/store/states.interface';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { selectShoppingListByUuid } from '@store/selectors/shopping-list.selectors';
 
 @Component({
@@ -24,6 +24,4 @@ export class ShoppingListComponent implements OnInit {
   private get shoppingListId(): string {
     return this.route.snapshot.params['uuid'];
   }
-
-  public deleteShoppingList(): void {}
 }

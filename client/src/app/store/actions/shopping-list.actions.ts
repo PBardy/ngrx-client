@@ -46,7 +46,7 @@ export const deleteManyShoppingListsSuccess = createAction(
 
 export const createShoppingList = createAction(
   'shopping-lists/create-one',
-  props<Omit<IShoppingList, 'uuid'>>()
+  props<Pick<IShoppingList, 'name' | 'tags'>>()
 );
 
 export const updateShoppingList = createAction(

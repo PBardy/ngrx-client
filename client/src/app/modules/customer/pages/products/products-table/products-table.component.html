@@ -6,7 +6,7 @@
   matSortDisableClear
   matSortDirection="desc"
   [dataSource]="dataSource"
-  [trackBy]="trackProductByUuid"
+  [trackBy]="modelHelperService.trackByUuid"
 >
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -44,7 +44,7 @@
       <span class="name">Name</span>
     </th>
     <td width="100%" mat-cell *matCellDef="let element">
-      <div class="name-cell" (click)="viewProduct(element)">
+      <div class="name-cell" (click)="productService.viewProduct(element)">
         <a class="name-link">{{ element.name | titlecase }}</a>
       </div>
     </td>
@@ -70,8 +70,8 @@
         <mat-chip-list>
           <mat-chip
             class="chip"
-            [class.bad]="isUnavailable(element)"
-            [class.good]="isAvailable(element)"
+            [class.bad]="productService.isUnavailable(element)"
+            [class.good]="productService.isAvailable(element)"
           >
             <span>{{ element.availability }}</span>
           </mat-chip>
@@ -100,11 +100,11 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #selectItemMenu>
-        <button mat-menu-item (click)="viewProduct(element)">
+        <button mat-menu-item (click)="productService.viewProduct(element)">
           <mat-icon>visibility</mat-icon>
           <span>View Product</span>
         </button>
-        <ng-container *ngIf="canPurchaseProduct(element)">
+        <ng-container *ngIf="productService.canPurchaseProduct(element)">
           <button mat-menu-item (click)="addProductToCart(element)">
             <mat-icon>add</mat-icon>
             <span>Add to cart</span>

@@ -19,6 +19,8 @@ import {
 import { IShoppingList } from '@interfaces/models/shopping-list.interface';
 import { IAppState } from '@interfaces/store/states.interface';
 import { Store } from '@ngrx/store';
+import { ModelHelperService } from '@services/model-helper.service';
+import { ProductService } from '@services/product.service';
 import {
   addProductsToCart,
   addProductToCart,
@@ -70,7 +72,9 @@ export class ProductsTableComponent
   public constructor(
     private readonly router: Router,
     private readonly store: Store<IAppState>,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    public readonly modelHelperService: ModelHelperService,
+    public readonly productService: ProductService
   ) {}
 
   public ngOnInit(): void {
@@ -127,10 +131,6 @@ export class ProductsTableComponent
     this.selection.select(...this.dataSource.data);
   }
 
-  public viewProduct({ uuid }: IProduct): void {
-    this.router.navigateByUrl('/user/customer/products/' + uuid);
-  }
-
   public addProductToCart(product: IProduct): void {
     this.store.dispatch(addProductToCart(product));
   }
@@ -154,21 +154,5 @@ export class ProductsTableComponent
     products: Array<IProduct>
   ): void {
     this.store.dispatch(addProductsToShoppingList({ products, shoppingList }));
-  }
-
-  public trackProductByUuid(index: number, product: IProduct) {
-    return product.uuid;
-  }
-
-  public isAvailable(product: IProduct) {
-    return product.availability === ProductAvailability.AVAILABLE;
-  }
-
-  public isUnavailable(product: IProduct) {
-    return product.availability === ProductAvailability.UNAVAILABLE;
-  }
-
-  public canPurchaseProduct(product: IProduct): boolean {
-    return this.isAvailable(product);
   }
 }

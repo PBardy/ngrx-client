@@ -136,34 +136,6 @@ export class ShoppingListEffects extends ApiEffects {
     )
   );
 
-  public readonly addProduct = createEffect(() =>
-    this.actions.pipe(
-      ofType(addProductToShoppingList),
-      exhaustMap(({ shoppingList, product }) =>
-        this.shoppingListService.addProduct(shoppingList, product).pipe(
-          map((res) => addOneShoppingList(res.data)),
-          catchError((err: HttpErrorResponse) =>
-            from(this.showError(err)).pipe(switchMap(() => EMPTY))
-          )
-        )
-      )
-    )
-  );
-
-  public readonly addProducts = createEffect(() =>
-    this.actions.pipe(
-      ofType(addProductsToShoppingList),
-      exhaustMap(({ shoppingList, products }) =>
-        this.shoppingListService.addProducts(shoppingList, products).pipe(
-          map((res) => addOneShoppingList(res.data)),
-          catchError((err: HttpErrorResponse) =>
-            from(this.showError(err)).pipe(switchMap(() => EMPTY))
-          )
-        )
-      )
-    )
-  );
-
   public constructor(
     protected readonly actions: Actions,
     protected override readonly snackbar: MatSnackBar,

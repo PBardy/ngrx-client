@@ -11,10 +11,11 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { IProduct } from '@interfaces/models/product.interface';
 import { IAppState } from '@interfaces/store/states.interface';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
+import { ModelHelperService } from '@services/model-helper.service';
+import { ProductService } from '@services/product.service';
 import {
   removeAllProductsFromCart,
   removeProductFromCart,
@@ -44,9 +45,10 @@ export class CartTableComponent implements OnInit, OnDestroy, AfterViewInit {
   public selection = new SelectionModel<IProduct>(true, []);
 
   public constructor(
-    private readonly router: Router,
     private readonly store: Store<IAppState>,
-    private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef,
+    public readonly modelHelperService: ModelHelperService,
+    public readonly productService: ProductService
   ) {}
 
   public ngOnInit(): void {}
@@ -91,14 +93,6 @@ export class CartTableComponent implements OnInit, OnDestroy, AfterViewInit {
     }
 
     this.selection.select(...this.dataSource.data);
-  }
-
-  public viewProduct({ uuid }: IProduct): void {
-    this.router.navigateByUrl('/user/customer/products/' + uuid);
-  }
-
-  public trackProductByUuid(index: number, product: IProduct) {
-    return product.uuid;
   }
 
   public removeProductFromCart(product: IProduct): void {

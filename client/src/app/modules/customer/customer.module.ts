@@ -30,6 +30,7 @@ import { CartTableComponent } from './pages/cart/cart-table/cart-table.component
 import { CartCheckoutComponent } from './pages/cart/cart-checkout/cart-checkout.component';
 import { CartEmptyComponent } from './pages/cart/cart-empty/cart-empty.component';
 import { ShoppingListTableComponent } from './pages/shopping-list/shopping-list-table/shopping-list-table.component';
+import { ShoppingListSearchComponent } from './pages/shopping-list/shopping-list-search/shopping-list-search.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ShoppingListTableComponent } from './pages/shopping-list/shopping-list-
     CartCheckoutComponent,
     CartEmptyComponent,
     ShoppingListTableComponent,
+    ShoppingListSearchComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, CustomerRoutingModule],
 })

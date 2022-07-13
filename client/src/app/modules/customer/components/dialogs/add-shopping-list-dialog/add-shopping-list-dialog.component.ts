@@ -25,7 +25,7 @@ export class AddShoppingListDialogComponent {
   public onCreate(): void {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      const value = this.form.value as Omit<IShoppingList, 'uuid'>;
+      const value = this.form.value as Pick<IShoppingList, 'name' | 'tags'>;
       this.store.dispatch(createShoppingList(value));
       this.dialogRef.close();
     }

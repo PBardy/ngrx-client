@@ -31,6 +31,7 @@ import { cartReducer } from '@store/reducers/cart.reducer';
 import { CartEffects } from '@store/effects/cart.effects';
 import { shippingMethodsReducer } from '@store/reducers/shipping-methods.reducer';
 import { ShippingMethodEffects } from '@store/effects/shipping-method.effects';
+import { ShoppingListItemEffects } from '@store/effects/shopping-list-item.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,6 +60,7 @@ import { ShippingMethodEffects } from '@store/effects/shipping-method.effects';
       CategoryEffects,
       UserTypeEffects,
       ShoppingListEffects,
+      ShoppingListItemEffects,
       CartEffects,
       ShippingMethodEffects,
     ]),

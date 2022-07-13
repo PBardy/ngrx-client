@@ -6,7 +6,7 @@
   matSortDisableClear
   matSortDirection="desc"
   [dataSource]="dataSource"
-  [trackBy]="trackProductByUuid"
+  [trackBy]="modelHelperService.trackByUuid"
 >
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -44,7 +44,7 @@
       <span class="name">Name</span>
     </th>
     <td width="100%" mat-cell *matCellDef="let element">
-      <div class="name-cell" (click)="viewProduct(element)">
+      <div class="name-cell" (click)="productService.viewProduct(element)">
         <a class="name-link">{{ element.name | titlecase }}</a>
       </div>
     </td>

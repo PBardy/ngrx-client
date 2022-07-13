@@ -17,11 +17,11 @@ export abstract class ModelService<T extends IModel> extends ApiService {
     return this.http.get<A<T>>(`/${this.basePath}/${uuid}`);
   }
 
-  public createOne(payload: Omit<T, 'uuid'>) {
+  public createOne(payload: Partial<T>) {
     return this.http.post<A<T>>(`/${this.basePath}`, payload);
   }
 
-  public updateOne(uuid: string, payload: Omit<T, 'uuid'>) {
+  public updateOne(uuid: string, payload: Partial<T>) {
     return this.http.put<A<T>>(`/${this.basePath}/${uuid}`, payload);
   }
 
