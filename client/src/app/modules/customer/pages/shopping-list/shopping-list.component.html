@@ -3,7 +3,16 @@
     <header class="header">
       <h3>{{ shoppingList.name }}</h3>
     </header>
-    <app-shopping-list-search></app-shopping-list-search>
-    <app-shopping-list-table></app-shopping-list-table>
+    <section class="section section-top">
+      <app-shopping-list-search></app-shopping-list-search>
+      <app-shopping-list-actions
+        [shoppingList]="shoppingList"
+      ></app-shopping-list-actions>
+    </section>
+    <section class="section section-table">
+      <app-shopping-list-table
+        [shoppingList]="shoppingList"
+      ></app-shopping-list-table>
+    </section>
   </main>
 </ng-container>

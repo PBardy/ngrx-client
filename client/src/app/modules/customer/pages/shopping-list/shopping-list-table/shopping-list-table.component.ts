@@ -4,8 +4,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
+  OnChanges,
   OnDestroy,
   OnInit,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -32,18 +35,14 @@ import { filter, map, Subscription } from 'rxjs';
   styleUrls: ['./shopping-list-table.component.scss'],
 })
 export class ShoppingListTableComponent
-  implements OnInit, OnDestroy, AfterViewInit
+  implements OnInit, OnDestroy, OnChanges, AfterViewInit
 {
   @ViewChild(MatSort, { static: true }) public sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
 
   private readonly subscriptions = new Subscription();
 
-  private shoppingList: IShoppingList;
-
-  public shoppingList$ = this.store.select(
-    selectShoppingListByUuid(this.shoppingListId)
-  );
+  @Input() public shoppingList: IShoppingList;
 
   public readonly columns = [
     'select',
@@ -60,16 +59,13 @@ export class ShoppingListTableComponent
   public selection = new SelectionModel<IProduct>(true, []);
 
   public constructor(
-    private readonly route: ActivatedRoute,
     private readonly store: Store<IAppState>,
     private readonly changeDetectorRef: ChangeDetectorRef,
     public readonly modelHelperService: ModelHelperService,
     public readonly productService: ProductService
   ) {}
 
-  public ngOnInit(): void {
-    this.initFilterPredicate();
-  }
+  public ngOnInit(): void {}
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
@@ -77,29 +73,14 @@ export class ShoppingListTableComponent
 
   public ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
-    this.initShoppingList();
   }
 
-  private get shoppingListId(): string {
-    return this.route.snapshot.params['uuid'];
+  public ngOnChanges(): void {
+    if (this.shoppingList) {
+      this.dataSource.data = this.shoppingList.items;
+      this.changeDetectorRef.detectChanges();
+    }
   }
-
-  private initShoppingList(): void {
-    this.subscriptions.add(
-      this.shoppingList$
-        .pipe(
-          filter((shoppingList) => Boolean(shoppingList)),
-          map((shoppingList) => shoppingList as IShoppingList)
-        )
-        .subscribe((shoppingList) => {
-          this.shoppingList = shoppingList;
-          this.dataSource.data = shoppingList.items;
-          this.changeDetectorRef.detectChanges();
-        })
-    );
-  }
-
-  private initFilterPredicate(): void {}
 
   public isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;

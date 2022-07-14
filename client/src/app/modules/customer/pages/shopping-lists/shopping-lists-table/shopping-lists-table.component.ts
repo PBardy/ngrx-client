@@ -14,8 +14,10 @@ import { Router } from '@angular/router';
 import { IShoppingList } from '@interfaces/models/shopping-list.interface';
 import { IAppState } from '@interfaces/store/states.interface';
 import { AddShoppingListDialogComponent } from '@modules/customer/components/dialogs/add-shopping-list-dialog/add-shopping-list-dialog.component';
+import { AddTagsToShoppingListDialogComponent } from '@modules/customer/components/dialogs/add-tags-to-shopping-list-dialog/add-tags-to-shopping-list-dialog.component';
 import { EditShoppingListDialogComponent } from '@modules/customer/components/dialogs/edit-shopping-list-dialog/edit-shopping-list-dialog.component';
 import { select, Store } from '@ngrx/store';
+import { ShoppingListService } from '@services/shopping-list.service';
 import {
   deleteShoppingList,
   deleteShoppingLists,
@@ -56,7 +58,8 @@ export class ShoppingListsTableComponent
   public constructor(
     private readonly router: Router,
     private readonly dialog: MatDialog,
-    private readonly store: Store<IAppState>
+    private readonly store: Store<IAppState>,
+    public readonly shoppingListService: ShoppingListService
   ) {}
 
   public ngOnInit(): void {
@@ -106,10 +109,6 @@ export class ShoppingListsTableComponent
     this.selection.select(...this.dataSource.data);
   }
 
-  public viewShoppingList({ uuid }: IShoppingList): void {
-    this.router.navigateByUrl('/user/customer/my/shopping-lists/' + uuid);
-  }
-
   public createShoppingList(): void {
     this.dialog.open(AddShoppingListDialogComponent);
   }
@@ -137,5 +136,11 @@ export class ShoppingListsTableComponent
     const uuids = this.selection.selected.map((selection) => selection.uuid);
     this.selection.clear();
     this.store.dispatch(deleteShoppingLists({ uuids }));
+  }
+
+  public addTagsToShoppingList(shoppingList: IShoppingList): void {
+    this.dialog.open(AddTagsToShoppingListDialogComponent, {
+      data: shoppingList,
+    });
   }
 }

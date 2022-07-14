@@ -31,6 +31,8 @@ import { CartCheckoutComponent } from './pages/cart/cart-checkout/cart-checkout.
 import { CartEmptyComponent } from './pages/cart/cart-empty/cart-empty.component';
 import { ShoppingListTableComponent } from './pages/shopping-list/shopping-list-table/shopping-list-table.component';
 import { ShoppingListSearchComponent } from './pages/shopping-list/shopping-list-search/shopping-list-search.component';
+import { ShoppingListActionsComponent } from './pages/shopping-list/shopping-list-actions/shopping-list-actions.component';
+import { AddTagsToShoppingListDialogComponent } from './components/dialogs/add-tags-to-shopping-list-dialog/add-tags-to-shopping-list-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +63,8 @@ import { ShoppingListSearchComponent } from './pages/shopping-list/shopping-list
     CartEmptyComponent,
     ShoppingListTableComponent,
     ShoppingListSearchComponent,
+    ShoppingListActionsComponent,
+    AddTagsToShoppingListDialogComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, CustomerRoutingModule],
 })

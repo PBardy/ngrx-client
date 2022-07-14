@@ -1,0 +1,40 @@
+<header class="header">
+  <h3>Add tags to shopping list</h3>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</header>
+
+<main class="main">
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Add tags</mat-label>
+      <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip *ngFor="let tag of tags" (removed)="removeTag(tag)">
+          {{ tag.name }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-list>
+      <input matInput formControlName="tags" />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="addTag($event)"
+      >
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag">
+          {{ tag.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</main>
+
+<footer class="footer">
+  <button class="btn btn-secondary" mat-ripple mat-dialog-close>
+    <span>Cancel</span>
+  </button>
+  <button class="btn btn-secondary" mat-ripple (click)="onSubmit()">
+    <span>Add</span>
+  </button>
+</footer>

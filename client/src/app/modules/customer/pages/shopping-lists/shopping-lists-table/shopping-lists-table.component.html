@@ -43,7 +43,10 @@
       <span class="name">Name</span>
     </th>
     <td width="100%" mat-cell *matCellDef="let element">
-      <div class="name-cell" (click)="viewShoppingList(element)">
+      <div
+        class="name-cell"
+        (click)="shoppingListService.viewShoppingList(element)"
+      >
         <a class="name-link">{{ element.name | titlecase }}</a>
       </div>
     </td>
@@ -77,6 +80,10 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #selectItemMenu>
+        <button mat-menu-item (click)="addTagsToShoppingList(element)">
+          <mat-icon>add</mat-icon>
+          <span>Add tags</span>
+        </button>
         <button mat-menu-item (click)="duplicateShoppingList(element)">
           <mat-icon>content_copy</mat-icon>
           <span>Duplicate shopping list</span>
