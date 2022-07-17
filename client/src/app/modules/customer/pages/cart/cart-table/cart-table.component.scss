@@ -1,5 +1,10 @@
 @import "material";
 
+.container {
+  background-color: var(--palette-gray-100);
+  border: 1px solid var(--palette-gray-400);
+}
+
 .table {
   width: 100%;
 }

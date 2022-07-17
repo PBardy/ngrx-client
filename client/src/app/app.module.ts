@@ -32,6 +32,9 @@ import { CartEffects } from '@store/effects/cart.effects';
 import { shippingMethodsReducer } from '@store/reducers/shipping-methods.reducer';
 import { ShippingMethodEffects } from '@store/effects/shipping-method.effects';
 import { ShoppingListItemEffects } from '@store/effects/shopping-list-item.effects';
+import { notificationsReducer } from '@store/reducers/notifications.reducer';
+import { userProductsReducer } from '@store/reducers/user-product.reducer';
+import { userLocationsReducer } from '@store/reducers/user-locations.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -50,6 +53,9 @@ import { ShoppingListItemEffects } from '@store/effects/shopping-list-item.effec
         shoppingLists: shoppingListsReducer,
         cart: cartReducer,
         shippingMethods: shippingMethodsReducer,
+        notifications: notificationsReducer,
+        userProducts: userProductsReducer,
+        userLocations: userLocationsReducer,
       },
       {}
     ),

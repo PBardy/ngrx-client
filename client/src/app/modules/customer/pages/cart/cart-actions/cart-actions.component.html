@@ -1,0 +1,27 @@
+<header class="flex items-center w-full bg-gray-100 border-b border-gray-300">
+  <div class="flex items-center w-full justify-center">
+    <div class="w-full max-w-[1280px]">
+      <div class="flex items-center justify-between py-8">
+        <div class="flex items-center gap-x-4">
+          <div class="bg-gray-300 text-gray-800 w-10 h-10 rounded">
+            <div class="flex items-center justify-center w-full h-full">
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+          </div>
+          <h3 class="font-bold text-2xl text-gray-800">Cart Checkout</h3>
+        </div>
+        <button
+          id="cart-checkout__add-products"
+          class="text-gray-1000 bg-primary-400 hover:bg-primary-500 transition-all rounded-lg"
+          (click)="addProducts()"
+        >
+          <div
+            class="flex items-center gap-x-2 px-6 py-3 border border-primary-500 rounded-lg"
+          >
+            <span class="text-base">Add products</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

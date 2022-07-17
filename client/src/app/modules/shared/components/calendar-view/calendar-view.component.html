@@ -1,0 +1,17 @@
+<ng-container [ngSwitch]="mode">
+  <ng-container *ngSwitchCase="'DAILY'">
+    <app-calendar-daily-view></app-calendar-daily-view>
+  </ng-container>
+  <ng-container *ngSwitchCase="'WEEKLY'">
+    <app-calendar-biweekly-view></app-calendar-biweekly-view>
+  </ng-container>
+  <ng-container *ngSwitchCase="'BIWEEKLY'">
+    <app-calendar-biweekly-view></app-calendar-biweekly-view>
+  </ng-container>
+  <ng-container *ngSwitchCase="'MONTHLY'">
+    <app-calendar-monthly-view></app-calendar-monthly-view>
+  </ng-container>
+  <ng-container *ngSwitchCase="'YEARLY'">
+    <app-calendar-yearly-view></app-calendar-yearly-view>
+  </ng-container>
+</ng-container>

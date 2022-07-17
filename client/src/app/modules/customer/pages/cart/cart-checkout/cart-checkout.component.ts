@@ -47,7 +47,27 @@ export class CartCheckoutComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit(): void {
+    this.form.markAllAsTouched();
+
     if (this.form.invalid) return;
-    this.store.dispatch(checkoutCart(this.form.value as ICartCheckout));
+    this.store.dispatch(
+      checkoutCart({
+        promoCode: this.form.value.promoCode!,
+        shippingMethod: this.form.value.shippingMethod!.uuid!,
+      })
+    );
+  }
+
+  public get shippingMethodControl() {
+    return this.form.controls.shippingMethod;
+  }
+
+  public get shippingCost(): number | undefined {
+    return this.shippingMethodControl.value?.price;
+  }
+
+  public get isInvalidShippingMethod(): boolean {
+    const { invalid, touched } = this.shippingMethodControl;
+    return invalid && touched;
   }
 }

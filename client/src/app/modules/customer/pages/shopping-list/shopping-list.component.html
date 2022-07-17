@@ -1,18 +1,41 @@
 <ng-container *ngIf="shoppingList$ | async as shoppingList">
-  <main class="main">
-    <header class="header">
-      <h3>{{ shoppingList.name }}</h3>
-    </header>
-    <section class="section section-top">
-      <app-shopping-list-search></app-shopping-list-search>
-      <app-shopping-list-actions
-        [shoppingList]="shoppingList"
-      ></app-shopping-list-actions>
-    </section>
-    <section class="section section-table">
-      <app-shopping-list-table
-        [shoppingList]="shoppingList"
-      ></app-shopping-list-table>
-    </section>
-  </main>
+  <app-shopping-list-actions
+    [shoppingList]="shoppingList"
+  ></app-shopping-list-actions>
+  <div class="flex justify-center w-full mt-8">
+    <div class="w-full max-w-[1280px] flex flex-col gap-y-4">
+      <ng-container *ngIf="shoppingList.items.length; else empty">
+        <main class="bg-gray-100 border border-gray-300">
+          <section class="px-4 py-4 border-b border-gray-300">
+            <div class="flex items-center justify-between gap-x-4">
+              <app-shopping-list-search></app-shopping-list-search>
+              <app-display-mode></app-display-mode>
+            </div>
+          </section>
+          <section>
+            <app-shopping-list-table
+              [shoppingList]="shoppingList"
+            ></app-shopping-list-table>
+          </section>
+        </main>
+      </ng-container>
+      <ng-template #empty>
+        <app-shopping-list-empty></app-shopping-list-empty>
+      </ng-template>
+      <footer
+        class="bg-gray-100 border border-gray-300 p-4 flex items-center justify-end"
+      >
+        <button
+          class="text-gray-1000 bg-red-400 hover:bg-red-500 transition-all rounded-lg"
+        >
+          <div
+            class="flex items-center gap-x-2 px-6 py-3 border border-red-500 rounded-lg"
+          >
+            <mat-icon>delete</mat-icon>
+            <span class="text-lg">Remove shopping list</span>
+          </div>
+        </button>
+      </footer>
+    </div>
+  </div>
 </ng-container>

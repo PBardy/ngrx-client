@@ -6,6 +6,7 @@ $toolbar-height: 60px;
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  background-color: var(--palette-gray-100);
 }
 
 .header {
@@ -14,6 +15,16 @@ $toolbar-height: 60px;
 
 .nav {
   height: 100%;
+}
+
+.subheader,
+.nav-list-item {
+  color: var(--palette-gray-800);
+}
+
+.nav-list-item.active {
+  color: var(--palette-gray-1000);
+  background-color: var(--palette-primary-500);
 }
 
 .footer {

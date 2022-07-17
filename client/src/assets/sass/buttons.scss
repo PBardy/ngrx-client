@@ -1,33 +1,60 @@
-.btn {
-  border: 0;
-  outline: 0;
-  font-size: inherit;
-  font-family: inherit;
-  padding: 1rem 2rem;
-  cursor: pointer;
-  will-change: background-color;
-  transition: all 0.3s ease-in-out;
+// Button toggle groups
+
+.mat-button-toggle-group-appearance-standard
+  .mat-button-toggle
+  + .mat-button-toggle {
+  border-left: 1px solid var(--palette-gray-400);
 }
 
-.btn-primary {
-  color: var(--white-1);
-  background-color: var(--blue-1);
-  text-transform: uppercase;
+.mat-toggle-button-group,
+.mat-button-toggle-standalone.mat-button-toggle-appearance-standard,
+.mat-button-toggle-group-appearance-standard {
+  outline: 0;
+  border: 1px solid var(--palette-gray-400);
   border-radius: 4px;
 }
 
-.btn-primary span {
-  letter-spacing: 1px;
+.mat-button-toggle {
+  color: var(--palette-gray-800);
+  background-color: var(--palette-gray-100);
 }
 
-.btn-primary:disabled {
-  opacity: 0.5;
+.mat-button-toggle-checked {
+  color: var(--palette-gray-1000);
+  background-color: var(--palette-primary-500);
 }
 
-.btn-primary:not(:disabled):hover {
-  background-color: var(--blue-2);
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  color: var(--palette-gray-1000);
 }
 
-.btn-pill {
-  border-radius: 25px;
+// Icon buttons
+
+.mat-icon-button.mat-button-disabled.mat-button-disabled {
+  color: inherit;
+}
+
+// Normal buttons
+
+.btn {
+  width: 100%;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  border-radius: 6px;
+  color: var(----palette-gray-1000);
+  background-color: var(--palette-primary-400);
+  font-weight: bold;
+}
+
+.btn-secondary {
+  border-radius: 6px;
+  color: var(----palette-gray-1000);
+  background-color: var(--palette-gray-500);
+  font-weight: bold;
 }

@@ -1,7 +1,27 @@
-<header class="header">
-  <h3>Products</h3>
-</header>
-<section class="section mat-elevation-z1">
-  <app-products-search></app-products-search>
-  <app-products-table></app-products-table>
-</section>
+<app-product-actions></app-product-actions>
+
+<div class="flex justify-center">
+  <div class="w-full max-w-[1280px]">
+    <main class="flex flex-row w-full gap-x-8 my-8">
+      <article class="flex flex-1">
+        <ng-container [ngSwitch]="view">
+          <ng-container *ngSwitchCase="'table'">
+            <app-products-table class="products-table"></app-products-table>
+          </ng-container>
+          <ng-container *ngSwitchCase="'list'">
+            <app-products-list class="products-list"></app-products-list>
+          </ng-container>
+        </ng-container>
+      </article>
+      <aside class="flex flex-col gap-y-4">
+        <section class="flex justify-between gap-x-4">
+          <app-products-search
+            [products]="products$ | async"
+          ></app-products-search>
+          <app-display-mode (change)="view = $event"></app-display-mode>
+        </section>
+        <app-product-filters></app-product-filters>
+      </aside>
+    </main>
+  </div>
+</div>

@@ -73,7 +73,7 @@
             [class.bad]="productService.isUnavailable(element)"
             [class.good]="productService.isAvailable(element)"
           >
-            <span>{{ element.availability }}</span>
+            <span>{{ element.availability | titlecase }}</span>
           </mat-chip>
         </mat-chip-list>
       </div>

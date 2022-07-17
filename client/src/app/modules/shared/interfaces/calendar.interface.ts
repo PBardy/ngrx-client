@@ -1,0 +1,19 @@
+import { FormControl } from '@angular/forms';
+
+export enum CalendarMode {
+  DAILY = 'DAILY',
+  WEEKLY = 'WEEKLY',
+  BIWEEKLY = 'BIWEEKLY',
+  MONTHLY = 'MONTHLY',
+  BIMONTHLY = 'BIMONTHLY',
+}
+
+export interface ICalendarControls {
+  mode: FormControl<CalendarMode | null>;
+}
+
+export interface ICalendarEvent<T> {
+  endDate: Date;
+  startDate: Date;
+  data: T;
+}

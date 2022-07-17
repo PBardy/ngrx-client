@@ -1,19 +1,25 @@
 <ng-container *ngIf="cart$ | async as cart">
-  <ng-container *ngIf="cart.length; else cartEmpty">
-    <section class="section">
-      <article class="article">
-        <header class="header">
-          <h3>Shopping Cart</h3>
-          <h3>{{ cart.length }} Items</h3>
-        </header>
-        <app-cart-table></app-cart-table>
-      </article>
-      <aside class="aside">
-        <app-cart-checkout></app-cart-checkout>
-      </aside>
-    </section>
-  </ng-container>
-  <ng-template #cartEmpty>
-    <app-cart-empty></app-cart-empty>
-  </ng-template>
+  <app-cart-actions></app-cart-actions>
+  <main class="flex justify-center text-gray-800 mt-4">
+    <div class="w-full max-w-[1280px]">
+      <ng-container *ngIf="cart.length; else empty">
+        <main class="main">
+          <article class="article">
+            <h4>Your items</h4>
+            <app-cart-table></app-cart-table>
+          </article>
+          <aside class="aside">
+            <h4>Checkout</h4>
+            <app-cart-checkout></app-cart-checkout>
+          </aside>
+        </main>
+      </ng-container>
+      <ng-template #empty>
+        <section class="section">
+          <h4>Your items</h4>
+          <app-cart-empty></app-cart-empty>
+        </section>
+      </ng-template>
+    </div>
+  </main>
 </ng-container>

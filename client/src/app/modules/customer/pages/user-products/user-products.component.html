@@ -1,1 +1,14 @@
-<p>user-products works!</p>
+<app-user-products-actions></app-user-products-actions>
+
+<ng-container *ngIf="userProducts$ | async as userProducts">
+  <div class="flex flex-row justify-center">
+    <div class="w-full max-w-[1280px]">
+      <main class="flex flex-col my-4">
+        <ng-container *ngIf="userProducts.length; else empty"></ng-container>
+        <ng-template #empty>
+          <app-user-products-empty></app-user-products-empty>
+        </ng-template>
+      </main>
+    </div>
+  </div>
+</ng-container>

@@ -1,3 +1,24 @@
-<section class="section">
-  <app-shopping-lists-table></app-shopping-lists-table>
-</section>
+<main class="flex flex-col gap-y-8">
+  <app-shopping-lists-actions></app-shopping-lists-actions>
+
+  <div class="flex flex-row justify-center w-full">
+    <div class="w-full max-w-[1280px] bg-gray-100 border border-gray-300">
+      <section class="px-4 py-4 border-b border-gray-300">
+        <div class="flex items-center justify-between gap-x-4">
+          <app-shopping-lists-search></app-shopping-lists-search>
+          <app-display-mode></app-display-mode>
+        </div>
+      </section>
+      <section>
+        <ng-container *ngIf="shoppingLists$ | async as shoppingLists">
+          <ng-container *ngIf="shoppingLists.length; else empty">
+            <app-shopping-lists-table></app-shopping-lists-table>
+          </ng-container>
+          <ng-template #empty>
+            <app-shopping-lists-empty></app-shopping-lists-empty>
+          </ng-template>
+        </ng-container>
+      </section>
+    </div>
+  </div>
+</main>

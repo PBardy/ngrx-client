@@ -1,77 +1,71 @@
-<div class="wrapper">
+<div class="wrapper text-gray-800">
   <div class="content">
-    <article class="article"></article>
-    <aside class="aside">
-      <form class="form" [formGroup]="form" (ngSubmit)="signIn()">
-        <header class="form-header">
-          <h2>Ready to go</h2>
-          <p>
+    <article class="bg-gray-000"></article>
+    <aside class="aside bg-gray-200">
+      <form
+        class="flex flex-col gap-y-4 w-full"
+        [formGroup]="form"
+        (ngSubmit)="signIn()"
+      >
+        <header class="flex flex-col gap-y-2">
+          <h2 class="text-3xl font-bold">Ready to go</h2>
+          <p class="mb-4">
             Don't have an account?
-            <a href="javascript:void(0)" (click)="signUp()">Sign up here</a>
+            <a
+              class="text-primary-700 underline"
+              href="javascript:void(0)"
+              (click)="signUp()"
+              >Sign up here</a
+            >
           </p>
-          <div class="social-buttons">
-            <app-social-buttons></app-social-buttons>
-          </div>
+          <app-social-buttons></app-social-buttons>
         </header>
-        <div class="form-group">
+        <div class="flex flex-col gap-y-2">
           <label>Email</label>
-          <mat-form-field
-            class="form-field"
-            appearance="outline"
-            floatLabel="never"
-            floatPlaceholder="never"
-          >
-            <mat-icon matPrefix>email</mat-icon>
-            <mat-label class="form-label">Email</mat-label>
-            <input
-              matInput
-              id="email"
-              name="email"
-              type="email"
-              class="form-control"
-              formControlName="email"
-              autocapitalize="never"
-              autocomplete="email"
-              required
-            />
-          </mat-form-field>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            autocapitalize="never"
+            autocomplete="email"
+            placeholder="Email"
+            class="rounded-sm bg-gray-300 px-4 py-4"
+            required
+          />
         </div>
-        <div class="form-group">
-          <label>Password</label>
-          <mat-form-field
-            class="form-field"
-            appearance="outline"
-            floatLabel="never"
-            floatPlaceholder="never"
-          >
-            <mat-icon matPrefix>lock</mat-icon>
-            <mat-label class="form-label">Password</mat-label>
-            <input
-              matInput
-              id="password"
-              name="password"
-              type="password"
-              class="form-control"
-              formControlName="password"
-              autocapitalize="never"
-              autocomplete="current-password"
-              required
-            />
-          </mat-form-field>
+        <div class="flex flex-col gap-y-2">
+          <label class="font-bold">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="password"
+            autocapitalize="never"
+            autocomplete="current-password"
+            class="rounded-sm bg-gray-300 px-4 py-4"
+            required
+          />
         </div>
         <mat-checkbox class="checkbox">
           I agree to the <a href="">terms and conditions</a> and
           <a href="">cookie policy</a>
         </mat-checkbox>
         <footer class="form-footer">
-          <button class="btn btn-primary" type="submit" matRipple>
+          <button
+            type="submit"
+            class="bg-primary-400 rounded-sm w-full py-4 px-8"
+          >
             <ng-container *ngIf="authState$ | async as authState; else default">
               <ng-container *ngIf="authState.loading; else default">
                 <mat-spinner [diameter]="25"></mat-spinner>
               </ng-container>
             </ng-container>
             <ng-template #default>
-              <span>Sign In</span>
+              <span class="text-lg font-bold">Sign In</span>
             </ng-template>
           </button>
         </footer>

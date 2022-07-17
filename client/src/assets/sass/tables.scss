@@ -1,0 +1,17 @@
+.mat-table {
+  background-color: var(--palette-gray-100);
+}
+
+.mat-table,
+.mat-table thead,
+.mat-table tbody,
+.mat-table tr,
+.mat-table th,
+.mat-table td {
+  color: var(--palette-gray-800);
+}
+
+.mat-paginator {
+  color: var(--palette-gray-800);
+  background-color: var(--palette-gray-100);
+}

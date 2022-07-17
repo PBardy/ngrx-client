@@ -1,8 +1,11 @@
-<section class="section">
-  <h3>Cart Empty</h3>
-  <p>
-    Go add some items to your cart before checking out. Find new items, offers
-    and deals through <a href="">our store</a>, or re-order some of your
-    favourites from your shopping list, or from past orders.
-  </p>
+<section
+  class="flex items-center justify-center py-24 rounded-lg bg-gray-400 text-gray-800"
+>
+  <div class="flex flex-col">
+    <h4>
+      You currently have no items in your cart.
+      <a class="link" (click)="addProductsToCart()">Add some</a> and they'll
+      appear here.
+    </h4>
+  </div>
 </section>

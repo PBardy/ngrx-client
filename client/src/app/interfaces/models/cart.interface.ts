@@ -1,8 +1,8 @@
-import { IProduct } from './product.interface';
-import { IShippingMethod } from './shipping-method.interface';
-
-export interface ICartCheckout {
+export interface IBaseCartCheckout {
   promoCode: string | null;
-  shippingMethod: IShippingMethod;
-  products: Array<IProduct>;
+  shippingMethod: string;
+}
+
+export interface ICartCheckout extends IBaseCartCheckout {
+  productIds: Array<string>;
 }

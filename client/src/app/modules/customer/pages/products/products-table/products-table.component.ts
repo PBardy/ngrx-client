@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -70,7 +71,6 @@ export class ProductsTableComponent
   public selection = new SelectionModel<IProduct>(true, []);
 
   public constructor(
-    private readonly router: Router,
     private readonly store: Store<IAppState>,
     private readonly changeDetectorRef: ChangeDetectorRef,
     public readonly modelHelperService: ModelHelperService,

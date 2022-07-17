@@ -7,10 +7,11 @@
   matSortDirection="desc"
   [dataSource]="dataSource"
   [trackBy]="modelHelperService.trackByUuid"
+  class="w-full"
 >
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef>
+    <th class="text-base" mat-header-cell *matHeaderCellDef>
       <mat-checkbox
         (change)="$event ? toggleAllRows() : null"
         [checked]="selection.hasValue() && isAllSelected()"
@@ -18,7 +19,7 @@
       >
       </mat-checkbox>
     </th>
-    <td mat-cell *matCellDef="let row">
+    <td class="text-base" mat-cell *matCellDef="let row">
       <mat-checkbox
         (click)="$event.stopPropagation()"
         (change)="$event ? selection.toggle(row) : null"
@@ -30,42 +31,50 @@
 
   <!-- Id Column -->
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>
-      <span class="id">#</span>
+    <th class="text-base" mat-header-cell *matHeaderCellDef>
+      <span class="px-8">#</span>
     </th>
-    <td mat-cell *matCellDef="let element; let i = index">
-      <span class="id">{{ i + 1 }}</span>
+    <td class="text-base" mat-cell *matCellDef="let element; let i = index">
+      <span class="py-8">{{ i + 1 }}</span>
     </td>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th width="100%" mat-header-cell mat-sort-header *matHeaderCellDef>
+    <th
+      class="text-base"
+      width="100%"
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+    >
       <span class="name">Name</span>
     </th>
-    <td width="100%" mat-cell *matCellDef="let element">
-      <div class="name-cell" (click)="productService.viewProduct(element)">
-        <a class="name-link">{{ element.name | titlecase }}</a>
+    <td class="text-base" width="100%" mat-cell *matCellDef="let element">
+      <div class="flex-1" (click)="productService.viewProduct(element)">
+        <a class="transition-all hover:underline">
+          {{ element.name | titlecase }}
+        </a>
       </div>
     </td>
   </ng-container>
 
   <!-- Price Column -->
   <ng-container matColumnDef="price">
-    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+    <th class="text-base" mat-header-cell mat-sort-header *matHeaderCellDef>
       <span class="price">Price</span>
     </th>
-    <td mat-cell *matCellDef="let element">
+    <td class="text-base" mat-cell *matCellDef="let element">
       <span class="price">{{ element.price | currency }}</span>
     </td>
   </ng-container>
 
   <!-- Status Column -->
   <ng-container matColumnDef="status">
-    <th mat-header-cell mat-sort-header *matHeaderCellDef>
+    <th class="text-base" mat-header-cell mat-sort-header *matHeaderCellDef>
       <span class="status">Status</span>
     </th>
-    <td mat-cell *matCellDef="let element">
+    <td class="text-base" mat-cell *matCellDef="let element">
       <div class="status">
         <mat-chip-list>
           <mat-chip
@@ -108,15 +117,12 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr class="bg-gray-200" mat-header-row *matHeaderRowDef="columns"></tr>
   <tr
     mat-row
-    class="row"
+    class="cursor-pointer transition-all hover:bg-gray-400"
     *matRowDef="let row; columns: columns"
     [class.selected]="selection.isSelected(row)"
     (dblclick)="selection.toggle(row)"
   ></tr>
 </table>
-
-<mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons>
-</mat-paginator>

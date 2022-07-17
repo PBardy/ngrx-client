@@ -11,16 +11,7 @@ import {
   checkoutCartSuccess,
 } from '@store/actions/cart.actions';
 import { selectCart } from '@store/selectors/cart.selectors';
-import {
-  catchError,
-  EMPTY,
-  exhaustMap,
-  map,
-  of,
-  switchMap,
-  tap,
-  withLatestFrom,
-} from 'rxjs';
+import { catchError, EMPTY, exhaustMap, map, tap, withLatestFrom } from 'rxjs';
 
 @Injectable()
 export class CartEffects {
@@ -52,10 +43,16 @@ export class CartEffects {
       ofType(checkoutCart),
       withLatestFrom(this.store.select(selectCart)),
       exhaustMap(([{ type, ...payload }, products]) =>
-        this.cartService.checkOut({ ...payload, products }).pipe(
-          map(() => checkoutCartSuccess()),
-          catchError(() => EMPTY)
-        )
+        this.cartService
+          .checkOut({
+            promoCode: payload.promoCode,
+            shippingMethod: payload.shippingMethod,
+            productIds: products.map((product) => product.uuid),
+          })
+          .pipe(
+            map(() => checkoutCartSuccess()),
+            catchError(() => EMPTY)
+          )
       )
     )
   );

@@ -12,3 +12,20 @@ export const selectProductsSearch = createSelector(
   selectSelf,
   (state) => state.searchTerm
 );
+
+export const selectFilteredProducts = createSelector(
+  selectAllProducts,
+  selectProductsSearch,
+  (products, productsSearch) =>
+    products.filter((product) => {
+      const a = productsSearch.toLowerCase();
+      const b = product.name.toLowerCase();
+
+      return a.includes(b) || b.includes(a);
+    })
+);
+
+export const selectProductById = (id: string) =>
+  createSelector(selectAllProducts, (products) =>
+    products.filter((product) => product.uuid === id)
+  );

@@ -15,29 +15,97 @@ import { UserLocationComponent } from './pages/user-location/user-location.compo
 import { UserNotificationComponent } from './pages/user-notification/user-notification.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { AccountComponent } from './pages/account/account.component';
+import { UpdateShoppingListComponent } from './pages/update-shopping-list/update-shopping-list.component';
+import { CreateShoppingListComponent } from './pages/create-shopping-list/create-shopping-list.component';
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', component: HomeComponent },
-      { path: 'products', component: ProductsComponent },
-      { path: 'products/:uuid', component: ProductComponent },
-      { path: 'cart', component: CartComponent },
+      {
+        data: { title: 'Home' },
+        path: '',
+        component: HomeComponent,
+      },
+      {
+        data: { title: 'Products' },
+        path: 'products',
+        component: ProductsComponent,
+      },
+      {
+        data: { title: 'Product' },
+        path: 'products/:uuid',
+        component: ProductComponent,
+      },
+      {
+        data: { title: 'Cart' },
+        path: 'cart',
+        component: CartComponent,
+      },
+      {
+        data: { title: 'Create shopping list' },
+        path: 'shopping-lists/create',
+        component: CreateShoppingListComponent,
+      },
       {
         path: 'my',
         children: [
-          { path: 'account', component: AccountComponent },
-          { path: 'products', component: UserProductsComponent },
-          { path: 'products/:uuid', component: UserProductComponent },
-          { path: 'locations', component: UserLocationsComponent },
-          { path: 'locations/:uuid', component: UserLocationComponent },
-          { path: 'shopping-lists', component: ShoppingListsComponent },
-          { path: 'shopping-lists/:uuid', component: ShoppingListComponent },
-          { path: 'settings', component: UserSettingsComponent },
-          { path: 'notifications', component: UserNotificationsComponent },
-          { path: 'notifications/:uuid', component: UserNotificationComponent },
+          {
+            data: { title: 'Your account' },
+            path: 'account',
+            component: AccountComponent,
+          },
+          {
+            data: { title: 'Create shopping list' },
+            path: 'products',
+            component: UserProductsComponent,
+          },
+          {
+            data: { title: 'Your products' },
+            path: 'products/:uuid',
+            component: UserProductComponent,
+          },
+          {
+            data: { title: 'Locations' },
+            path: 'locations',
+            component: UserLocationsComponent,
+          },
+          {
+            data: { title: 'Location' },
+            path: 'locations/:uuid',
+            component: UserLocationComponent,
+          },
+          {
+            data: { title: 'Shopping lists' },
+            path: 'shopping-lists',
+            component: ShoppingListsComponent,
+          },
+          {
+            data: { title: 'Update shopping list' },
+            path: 'shopping-lists/:uuid/update',
+            component: UpdateShoppingListComponent,
+          },
+          {
+            data: { title: 'Shopping list' },
+            path: 'shopping-lists/:uuid',
+            component: ShoppingListComponent,
+          },
+          {
+            data: { title: 'Settings' },
+            path: 'settings',
+            component: UserSettingsComponent,
+          },
+          {
+            data: { title: 'Notifications' },
+            path: 'notifications',
+            component: UserNotificationsComponent,
+          },
+          {
+            data: { title: 'Notification' },
+            path: 'notifications/:uuid',
+            component: UserNotificationComponent,
+          },
         ],
       },
     ],

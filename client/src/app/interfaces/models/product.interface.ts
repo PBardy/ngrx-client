@@ -11,6 +11,7 @@ export interface IBaseProduct extends IModel {
   code: string;
   slug: string;
   name: string;
+  image: string;
   description?: string;
   price: number;
   availability: ProductAvailability;

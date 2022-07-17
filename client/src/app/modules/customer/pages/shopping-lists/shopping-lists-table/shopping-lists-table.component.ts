@@ -16,7 +16,7 @@ import { IAppState } from '@interfaces/store/states.interface';
 import { AddShoppingListDialogComponent } from '@modules/customer/components/dialogs/add-shopping-list-dialog/add-shopping-list-dialog.component';
 import { AddTagsToShoppingListDialogComponent } from '@modules/customer/components/dialogs/add-tags-to-shopping-list-dialog/add-tags-to-shopping-list-dialog.component';
 import { EditShoppingListDialogComponent } from '@modules/customer/components/dialogs/edit-shopping-list-dialog/edit-shopping-list-dialog.component';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { ShoppingListService } from '@services/shopping-list.service';
 import {
   deleteShoppingList,
@@ -37,11 +37,8 @@ import {
   templateUrl: './shopping-lists-table.component.html',
   styleUrls: ['./shopping-lists-table.component.scss'],
 })
-export class ShoppingListsTableComponent
-  implements OnInit, OnDestroy, AfterViewInit
-{
+export class ShoppingListsTableComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) public sort: MatSort;
-  @ViewChild(MatPaginator) public paginator: MatPaginator;
 
   private readonly subscriptions = new Subscription();
 
@@ -69,10 +66,6 @@ export class ShoppingListsTableComponent
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-  }
-
-  public ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
   }
 
   private initProducts(): void {

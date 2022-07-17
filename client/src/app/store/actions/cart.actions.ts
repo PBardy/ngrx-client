@@ -1,4 +1,4 @@
-import { ICartCheckout } from '@interfaces/models/cart.interface';
+import { IBaseCartCheckout } from '@interfaces/models/cart.interface';
 import { IProduct } from '@interfaces/models/product.interface';
 import { createAction, props } from '@ngrx/store';
 
@@ -21,7 +21,7 @@ export const removeProductsFromCart = createAction(
 
 export const checkoutCart = createAction(
   'cart/checkout',
-  props<ICartCheckout>()
+  props<IBaseCartCheckout>()
 );
 
 export const checkoutCartSuccess = createAction('cart/checkout/success');

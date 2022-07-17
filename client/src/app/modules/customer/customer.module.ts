@@ -33,6 +33,29 @@ import { ShoppingListTableComponent } from './pages/shopping-list/shopping-list-
 import { ShoppingListSearchComponent } from './pages/shopping-list/shopping-list-search/shopping-list-search.component';
 import { ShoppingListActionsComponent } from './pages/shopping-list/shopping-list-actions/shopping-list-actions.component';
 import { AddTagsToShoppingListDialogComponent } from './components/dialogs/add-tags-to-shopping-list-dialog/add-tags-to-shopping-list-dialog.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductsActionsComponent } from './pages/products/products-actions/products-actions.component';
+import { PerishableProductsCalendarWidgetComponent } from './pages/home/perishable-products-calendar-widget/perishable-products-calendar-widget.component';
+import { ProductHeroComponent } from './pages/product/product-hero/product-hero.component';
+import { ProductPropertiesComponent } from './pages/product/product-properties/product-properties.component';
+import { ProductCardComponent } from './pages/products/product-card/product-card.component';
+import { UserNotificationsEmptyComponent } from './pages/user-notifications/user-notifications-empty/user-notifications-empty.component';
+import { ShoppingListsEmptyComponent } from './pages/shopping-lists/shopping-lists-empty/shopping-lists-empty.component';
+import { AddProductsSidebarComponent } from './components/sidebars/add-products-sidebar/add-products-sidebar.component';
+import { CreateShoppingListComponent } from './pages/create-shopping-list/create-shopping-list.component';
+import { UpdateShoppingListComponent } from './pages/update-shopping-list/update-shopping-list.component';
+import { ShoppingListsActionsComponent } from './pages/shopping-lists/shopping-lists-actions/shopping-lists-actions.component';
+import { ShoppingListsSearchComponent } from './pages/shopping-lists/shopping-lists-search/shopping-lists-search.component';
+import { ShoppingListEmptyComponent } from './pages/shopping-list/shopping-list-empty/shopping-list-empty.component';
+import { CartActionsComponent } from './pages/cart/cart-actions/cart-actions.component';
+import { ProductActionsComponent } from './pages/products/product-actions/product-actions.component';
+import { ProductFiltersComponent } from './pages/products/product-filters/product-filters.component';
+import { UserProductsActionsComponent } from './pages/user-products/user-products-actions/user-products-actions.component';
+import { UserProductsEmptyComponent } from './pages/user-products/user-products-empty/user-products-empty.component';
+import { UserLocationsActionsComponent } from './pages/user-locations/user-locations-actions/user-locations-actions.component';
+import { UserLocationsEmptyComponent } from './pages/user-locations/user-locations-empty/user-locations-empty.component';
+import { UserSettingsActionsComponent } from './pages/user-settings/user-settings-actions/user-settings-actions.component';
+import { CreateShoppingListActionsComponent } from './pages/create-shopping-list/create-shopping-list-actions/create-shopping-list-actions.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +88,29 @@ import { AddTagsToShoppingListDialogComponent } from './components/dialogs/add-t
     ShoppingListSearchComponent,
     ShoppingListActionsComponent,
     AddTagsToShoppingListDialogComponent,
+    ProductsListComponent,
+    ProductsActionsComponent,
+    PerishableProductsCalendarWidgetComponent,
+    ProductHeroComponent,
+    ProductPropertiesComponent,
+    ProductCardComponent,
+    UserNotificationsEmptyComponent,
+    ShoppingListsEmptyComponent,
+    AddProductsSidebarComponent,
+    CreateShoppingListComponent,
+    UpdateShoppingListComponent,
+    ShoppingListsActionsComponent,
+    ShoppingListsSearchComponent,
+    ShoppingListEmptyComponent,
+    CartActionsComponent,
+    ProductActionsComponent,
+    ProductFiltersComponent,
+    UserProductsActionsComponent,
+    UserProductsEmptyComponent,
+    UserLocationsActionsComponent,
+    UserLocationsEmptyComponent,
+    UserSettingsActionsComponent,
+    CreateShoppingListActionsComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, CustomerRoutingModule],
 })

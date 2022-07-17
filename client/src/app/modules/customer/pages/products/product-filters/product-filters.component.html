@@ -1,0 +1,56 @@
+<form class="flex flex-col gap-y-8">
+  <section class="bg-gray-100 border border-gray-300 rounded-lg">
+    <div class="p-4">
+      <h4 class="font-bold">Filter by category</h4>
+    </div>
+    <mat-radio-group></mat-radio-group>
+  </section>
+  <section class="bg-gray-100 border border-gray-300 rounded-lg">
+    <div class="p-4">
+      <h4 class="font-bold">Filter by price</h4>
+    </div>
+    <mat-radio-group
+      class="flex flex-col"
+      aria-labelledby="Choose your shipping method"
+      aria-orientation="vertical"
+      formControlName="priceGroup"
+    >
+      <mat-radio-button
+        class="p-4 transition-all hover:bg-gray-300"
+        [value]="1"
+      >
+        <div>~ {{ 1 | currency }}</div>
+      </mat-radio-button>
+      <mat-radio-button
+        class="p-4 transition-all hover:bg-gray-300"
+        [value]="5"
+      >
+        <div>~ {{ 5 | currency }}</div>
+      </mat-radio-button>
+      <mat-radio-button
+        class="p-4 transition-all hover:bg-gray-300"
+        [value]="10"
+      >
+        <div>~ {{ 10 | currency }}</div>
+      </mat-radio-button>
+      <mat-radio-button
+        class="p-4 transition-all hover:bg-gray-300"
+        [value]="20"
+      >
+        <div>~ {{ 20 | currency }}</div>
+      </mat-radio-button>
+      <mat-radio-button
+        class="p-4 transition-all hover:bg-gray-300"
+        [value]="50"
+      >
+        <div>~ {{ 50 | currency }}</div>
+      </mat-radio-button>
+      <mat-radio-button
+        class="p-4 transition-all hover:bg-gray-300"
+        [value]="100"
+      >
+        <div>~ {{ 100 | currency }}</div>
+      </mat-radio-button>
+    </mat-radio-group>
+  </section>
+</form>

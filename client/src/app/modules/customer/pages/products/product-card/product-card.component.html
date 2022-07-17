@@ -1,0 +1,19 @@
+<mat-card class="card">
+  <img mat-card-image [src]="product.image" />
+  <mat-card-content class="card-content">
+    <div class="card-title">
+      <h4
+        class="font-bold text-lg cursor-pointer transition:all hover:underline"
+        [routerLink]="productLink"
+      >
+        {{ product.name }}
+      </h4>
+    </div>
+    <div class="card-body">
+      <p>{{ product.description | slice: 0:144 }}</p>
+    </div>
+    <button class="btn btn-primary" mat-ripple (click)="addToCart()">
+      <span>Add to cart</span>
+    </button>
+  </mat-card-content>
+</mat-card>

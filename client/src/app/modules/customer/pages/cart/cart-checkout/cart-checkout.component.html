@@ -1,54 +1,69 @@
 <ng-container *ngIf="cart$ | async as cart">
   <form class="form" [formGroup]="form">
-    <header class="header">
-      <h3>Order Summary</h3>
-    </header>
-    <section class="section">
-      <div class="items-summary">
-        <label>Items {{ cart.length }}</label>
-        <label>{{ cartCost$ | async | currency }}</label>
-      </div>
-      <div class="form-control">
-        <label>Shipping</label>
-        <mat-form-field appearance="outline">
-          <mat-label>Shipping method</mat-label>
-          <mat-select formControlName="shippingMethod">
-            <ng-container *ngIf="shippingMethods$ | async as shippingMethods">
-              <ng-container *ngFor="let shippingMethod of shippingMethods">
-                <mat-option [value]="shippingMethod">
-                  <span>
-                    {{ shippingMethod.name }} -
-                    {{ shippingMethod.price | currency }}
-                  </span>
-                </mat-option>
-              </ng-container>
-            </ng-container>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="form-control">
-        <label>Promo Code</label>
-        <mat-form-field appearance="outline">
-          <input
-            matInput
-            id="promoCode"
-            name="promoCode"
-            formControlName="promoCode"
-          />
-        </mat-form-field>
-        <button class="btn btn-accent" mat-ripple>
-          <span>Apply</span>
-        </button>
+    <section class="section" [class.error]="isInvalidShippingMethod">
+      <ng-container *ngIf="shippingMethods$ | async as shippingMethods">
+        <div class="shipping-methods-header">
+          <h6>Shipping Method</h6>
+          <h6>Price</h6>
+        </div>
+        <mat-radio-group
+          class="radio-group"
+          aria-labelledby="Choose your shipping method"
+          aria-orientation="vertical"
+          formControlName="shippingMethod"
+        >
+          <ng-container *ngFor="let shippingMethod of shippingMethods">
+            <mat-radio-button class="radio-button" [value]="shippingMethod">
+              <div class="shipping-method">
+                <span aria-labelledby="Shipping method">
+                  {{ shippingMethod.name }}
+                </span>
+                <span aria-labelledby="Shipping method price">
+                  {{ shippingMethod.price | currency }}
+                </span>
+              </div>
+            </mat-radio-button>
+          </ng-container>
+        </mat-radio-group>
+      </ng-container>
+    </section>
+    <section class="bg-gray-100 border border-gray-300 p-4 rounded-lg">
+      <div class="flex flex-col gap-y-4">
+        <label class="font-bold">Promo Code</label>
+        <input
+          id="promoCode"
+          name="promoCode"
+          placeholder="Promo code"
+          formControlName="promoCode"
+          class="bg-gray-200 border border-gray-300 p-4 rounded-sm"
+        />
       </div>
     </section>
     <section class="section">
-      <div class="cost-summary">
-        <label>Total Cost</label>
-        <label>{{ cartCost$ | async | currency }}</label>
+      <div class="section-inner">
+        <h6>Summary</h6>
+        <ng-container *ngIf="cartCost$ | async as cartCost">
+          <ul>
+            <li>
+              <span>Items cost</span>
+              <span>{{ cartCost | currency }}</span>
+            </li>
+            <li>
+              <span>Shipping cost</span>
+              <span>
+                {{ shippingCost | currency }}
+              </span>
+            </li>
+            <li>
+              <span>Total cost</span>
+              <span>{{ shippingCost! + cartCost! | currency }}</span>
+            </li>
+          </ul>
+        </ng-container>
+        <button class="btn btn-primary" mat-ripple (click)="onSubmit()">
+          <span>Checkout</span>
+        </button>
       </div>
-      <button class="btn btn-primary" mat-ripple (click)="onSubmit()">
-        <span>Checkout</span>
-      </button>
     </section>
   </form>
 </ng-container>

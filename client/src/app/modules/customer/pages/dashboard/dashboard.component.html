@@ -1,8 +1,10 @@
-<mat-drawer-container class="drawer-container">
-  <mat-drawer class="drawer" mode="side" [opened]="true">
+<mat-drawer-container
+  class="bg-gray-000 border-r border-gray-100 min-h-full text-gray-800"
+>
+  <mat-drawer class="min-h-full min-w-[320px]" mode="side" [opened]="true">
     <app-drawer></app-drawer>
   </mat-drawer>
-  <mat-drawer-content class="drawer-content">
+  <mat-drawer-content class="bg-gray-000 min-h-full">
     <app-toolbar></app-toolbar>
     <main class="main">
       <section class="section">

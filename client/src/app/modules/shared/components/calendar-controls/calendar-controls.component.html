@@ -1,0 +1,12 @@
+<form class="form" [formGroup]="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Select mode</mat-label>
+    <mat-select formControlName="mode">
+      <ng-container *ngFor="let mode of modes">
+        <mat-option [value]="mode.value">
+          <span>{{ mode.label }}</span>
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</form>

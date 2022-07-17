@@ -1,1 +1,10 @@
-<p>product works!</p>
+<ng-container *ngIf="product$ | async as product">
+  <main class="main">
+    <section class="section section-hero">
+      <app-product-hero></app-product-hero>
+    </section>
+    <section class="section section-properties">
+      <app-product-properties></app-product-properties>
+    </section>
+  </main>
+</ng-container>

@@ -14,7 +14,6 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
 import { IProduct } from '@interfaces/models/product.interface';
 import { IShoppingList } from '@interfaces/models/shopping-list.interface';
 import { IAppState } from '@interfaces/store/states.interface';
@@ -25,8 +24,7 @@ import {
   removeProductFromShoppingList,
   removeProductsFromShoppingList,
 } from '@store/actions/shopping-list.actions';
-import { selectShoppingListByUuid } from '@store/selectors/shopping-list.selectors';
-import { filter, map, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,10 +33,9 @@ import { filter, map, Subscription } from 'rxjs';
   styleUrls: ['./shopping-list-table.component.scss'],
 })
 export class ShoppingListTableComponent
-  implements OnInit, OnDestroy, OnChanges, AfterViewInit
+  implements OnInit, OnDestroy, OnChanges
 {
   @ViewChild(MatSort, { static: true }) public sort: MatSort;
-  @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
 
   private readonly subscriptions = new Subscription();
 
@@ -69,10 +66,6 @@ export class ShoppingListTableComponent
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-  }
-
-  public ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
   }
 
   public ngOnChanges(): void {
