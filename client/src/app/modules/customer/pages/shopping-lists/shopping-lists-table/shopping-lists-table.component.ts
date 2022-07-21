@@ -1,16 +1,8 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import {
-  AfterViewInit,
-  Component,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { IShoppingList } from '@interfaces/models/shopping-list.interface';
 import { IAppState } from '@interfaces/store/states.interface';
 import { AddShoppingListDialogComponent } from '@modules/customer/components/dialogs/add-shopping-list-dialog/add-shopping-list-dialog.component';
@@ -53,7 +45,6 @@ export class ShoppingListsTableComponent implements OnInit, OnDestroy {
   public selection = new SelectionModel<IShoppingList>(true, []);
 
   public constructor(
-    private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly store: Store<IAppState>,
     public readonly shoppingListService: ShoppingListService

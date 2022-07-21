@@ -1,12 +1,22 @@
-<form class="form" [formGroup]="form">
-  <mat-form-field appearance="outline">
-    <mat-label>Select mode</mat-label>
-    <mat-select formControlName="mode">
-      <ng-container *ngFor="let mode of modes">
-        <mat-option [value]="mode.value">
-          <span>{{ mode.label }}</span>
-        </mat-option>
-      </ng-container>
-    </mat-select>
-  </mat-form-field>
+<form class="flex flex-col py-8" [formGroup]="form">
+  <section class="flex items-center justify-center w-full">
+    <mat-button-toggle-group [formControl]="form.controls.mode">
+      <mat-button-toggle value="DAILY">
+        <span class="font-sans">Day View</span>
+      </mat-button-toggle>
+      <mat-button-toggle value="WEEKLY">
+        <span class="font-sans">Week View</span>
+      </mat-button-toggle>
+      <mat-button-toggle class="MONTHLY">
+        <span class="font-sans">Month View</span>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </section>
+  <section class="w-full min-w-[320px]">
+    <mat-calendar
+      class="calendar"
+      [selected]="form.controls.date.value"
+      (selectedChange)="form.controls.date.patchValue($event)"
+    ></mat-calendar>
+  </section>
 </form>

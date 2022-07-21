@@ -1,10 +1,15 @@
 <ng-container *ngIf="product$ | async as product">
-  <main class="main">
-    <section class="section section-hero">
-      <app-product-hero></app-product-hero>
-    </section>
-    <section class="section section-properties">
-      <app-product-properties></app-product-properties>
-    </section>
-  </main>
+  <app-product-actions [product]="product"></app-product-actions>
+  <div class="flex justify-center">
+    <div class="w-full max-w-[1280px]">
+      <main class="flex flex-col gap-y-4">
+        <section>
+          <app-product-hero></app-product-hero>
+        </section>
+        <section>
+          <app-product-properties></app-product-properties>
+        </section>
+      </main>
+    </div>
+  </div>
 </ng-container>

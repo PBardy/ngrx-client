@@ -1,19 +1,21 @@
-<mat-card class="card">
+<mat-card class="flex flex-col h-full">
   <img mat-card-image [src]="product.image" />
-  <mat-card-content class="card-content">
-    <div class="card-title">
-      <h4
-        class="font-bold text-lg cursor-pointer transition:all hover:underline"
-        [routerLink]="productLink"
-      >
-        {{ product.name }}
-      </h4>
+  <div class="flex flex-col flex-1 gap-y-4 flex-1">
+    <h4
+      class="font-sans font-bold text-lg cursor-pointer transition:all hover:underline"
+      [routerLink]="productLink"
+    >
+      {{ product.name }}
+    </h4>
+    <div class="flex-1">
+      <p class="font-sans">{{ product.description | slice: 0:144 }}</p>
     </div>
-    <div class="card-body">
-      <p>{{ product.description | slice: 0:144 }}</p>
-    </div>
-    <button class="btn btn-primary" mat-ripple (click)="addToCart()">
-      <span>Add to cart</span>
+    <button
+      mat-ripple
+      class="bg-primary-400 text-gray-1000 transition-all hover:bg-primary-500 rounded py-4 w-full"
+      (click)="addToCart()"
+    >
+      <span class="font-sans">Add to cart</span>
     </button>
-  </mat-card-content>
+  </div>
 </mat-card>

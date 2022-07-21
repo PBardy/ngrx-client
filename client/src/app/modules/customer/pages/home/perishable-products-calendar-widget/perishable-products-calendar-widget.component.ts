@@ -9,6 +9,7 @@ import { CalendarMode } from '@modules/shared/interfaces/calendar.interface';
 })
 export class PerishableProductsCalendarWidgetComponent implements OnInit {
   public readonly form = new FormGroup({
+    date: new FormControl<Date>(new Date(), [Validators.required]),
     mode: new FormControl<CalendarMode>(CalendarMode.DAILY, [
       Validators.required,
     ]),

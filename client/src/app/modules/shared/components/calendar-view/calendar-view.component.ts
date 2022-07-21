@@ -10,6 +10,7 @@ import {
   styleUrls: ['./calendar-view.component.scss'],
 })
 export class CalendarViewComponent implements OnInit {
+  @Input() public date: Date = new Date();
   @Input() public mode: CalendarMode = CalendarMode.DAILY;
   @Input() public events: Array<ICalendarEvent<any>> = [];
 

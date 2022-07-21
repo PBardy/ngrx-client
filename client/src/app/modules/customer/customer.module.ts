@@ -48,7 +48,7 @@ import { ShoppingListsActionsComponent } from './pages/shopping-lists/shopping-l
 import { ShoppingListsSearchComponent } from './pages/shopping-lists/shopping-lists-search/shopping-lists-search.component';
 import { ShoppingListEmptyComponent } from './pages/shopping-list/shopping-list-empty/shopping-list-empty.component';
 import { CartActionsComponent } from './pages/cart/cart-actions/cart-actions.component';
-import { ProductActionsComponent } from './pages/products/product-actions/product-actions.component';
+import { ProductActionsComponent } from './pages/product/product-actions/product-actions.component';
 import { ProductFiltersComponent } from './pages/products/product-filters/product-filters.component';
 import { UserProductsActionsComponent } from './pages/user-products/user-products-actions/user-products-actions.component';
 import { UserProductsEmptyComponent } from './pages/user-products/user-products-empty/user-products-empty.component';
@@ -56,6 +56,13 @@ import { UserLocationsActionsComponent } from './pages/user-locations/user-locat
 import { UserLocationsEmptyComponent } from './pages/user-locations/user-locations-empty/user-locations-empty.component';
 import { UserSettingsActionsComponent } from './pages/user-settings/user-settings-actions/user-settings-actions.component';
 import { CreateShoppingListActionsComponent } from './pages/create-shopping-list/create-shopping-list-actions/create-shopping-list-actions.component';
+import { HomeActionsComponent } from './pages/home/home-actions/home-actions.component';
+import { UserNotificationSettingsComponent } from './pages/user-settings/user-notification-settings/user-notification-settings.component';
+import { UserAccountSettingsComponent } from './pages/user-settings/user-account-settings/user-account-settings.component';
+import { UserProfileSettingsComponent } from './pages/user-settings/user-profile-settings/user-profile-settings.component';
+import { UserEmailSettingsComponent } from './pages/user-settings/user-email-settings/user-email-settings.component';
+import { UserPasswordSettingsComponent } from './pages/user-settings/user-password-settings/user-password-settings.component';
+import { UserLogoutComponent } from './pages/user-settings/user-logout/user-logout.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +118,13 @@ import { CreateShoppingListActionsComponent } from './pages/create-shopping-list
     UserLocationsEmptyComponent,
     UserSettingsActionsComponent,
     CreateShoppingListActionsComponent,
+    HomeActionsComponent,
+    UserNotificationSettingsComponent,
+    UserAccountSettingsComponent,
+    UserProfileSettingsComponent,
+    UserEmailSettingsComponent,
+    UserPasswordSettingsComponent,
+    UserLogoutComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, CustomerRoutingModule],
 })

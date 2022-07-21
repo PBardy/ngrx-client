@@ -1,2 +1,11 @@
-<app-calendar-controls [form]="form"></app-calendar-controls>
-<app-calendar-view></app-calendar-view>
+<div class="flex flex-row rounded-sm border border-gray-300">
+  <main class="flex-1">
+    <app-calendar-view
+      [date]="form.controls.date.value!"
+      [mode]="form.controls.mode.value!"
+    ></app-calendar-view>
+  </main>
+  <aside class="bg-gray-100 px-8">
+    <app-calendar-controls [form]="form"></app-calendar-controls>
+  </aside>
+</div>

@@ -1,43 +1,45 @@
 <div class="wrapper">
-  <header class="header"></header>
+  <header
+    class="header flex bg-gray-200 items-center px-4 text-gray-800 border-b border-gray-300"
+  >
+    <h2 class="font-sans font-bold text-xl">Project Name</h2>
+  </header>
   <nav class="nav">
-    <mat-nav-list class="nav-list">
+    <mat-nav-list class="border-b border-gray-300 pb-2">
       <mat-list-item class="nav-list-item" routerLink="/user/customer">
         <mat-icon mat-list-icon>dashboard</mat-icon>
-        <a matLine>Dashboard</a>
+        <a class="font-sans" matLine>Dashboard</a>
       </mat-list-item>
-      <h3 class="subheader" matSubheader>Purchase</h3>
       <mat-list-item
         class="nav-list-item"
         routerLink="/user/customer/products"
         routerLinkActive="active"
       >
         <mat-icon mat-list-icon>category</mat-icon>
-        <a matLine>Products</a>
+        <a class="font-sans" matLine>Products</a>
       </mat-list-item>
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list class="border-b border-gray-300 pb-2">
       <mat-list-item
         class="nav-list-item"
         routerLink="/user/customer/my/shopping-lists"
         routerLinkActive="active"
       >
         <mat-icon mat-list-icon>summarize</mat-icon>
-        <a matLine>Shopping lists</a>
+        <a class="font-sans" matLine>Shopping lists</a>
         <button mat-icon-button (click)="addShoppingList()">
           <mat-icon matSuffix matTooltip="Add shopping list">add</mat-icon>
         </button>
       </mat-list-item>
     </mat-nav-list>
-    <mat-nav-list class="nav-list">
-      <h3 class="subheader" matSubheader>My Inventory</h3>
+    <mat-nav-list class="border-b border-gray-300 pb-2">
       <mat-list-item
         class="nav-list-item"
         routerLink="/user/customer/my/products"
         routerLinkActive="active"
       >
         <mat-icon mat-list-icon>inventory_2</mat-icon>
-        <a matLine>My Products</a>
+        <a class="font-sans" matLine>My Products</a>
       </mat-list-item>
       <mat-list-item
         class="nav-list-item"
@@ -45,16 +47,24 @@
         routerLinkActive="active"
       >
         <mat-icon mat-list-icon>pin_drop</mat-icon>
-        <a matLine>My Locations</a>
+        <a class="font-sans" matLine>My Locations</a>
         <mat-icon matSuffix matTooltip="Add to my locations">add</mat-icon>
       </mat-list-item>
     </mat-nav-list>
   </nav>
   <footer class="footer">
-    <button mat-icon-button routerLink="/user/customer/my/account">
+    <button
+      class="text-gray-800"
+      mat-icon-button
+      routerLink="/user/customer/my/account"
+    >
       <mat-icon>person</mat-icon>
     </button>
-    <button mat-icon-button routerLink="/user/customer/my/settings">
+    <button
+      class="text-gray-800"
+      mat-icon-button
+      routerLink="/user/customer/my/settings"
+    >
       <mat-icon>settings</mat-icon>
     </button>
   </footer>

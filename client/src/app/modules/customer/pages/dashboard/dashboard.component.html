@@ -1,18 +1,25 @@
-<mat-drawer-container
-  class="bg-gray-000 border-r border-gray-100 min-h-full text-gray-800"
->
-  <mat-drawer class="min-h-full min-w-[320px]" mode="side" [opened]="true">
-    <app-drawer></app-drawer>
-  </mat-drawer>
-  <mat-drawer-content class="bg-gray-000 min-h-full">
-    <app-toolbar></app-toolbar>
-    <main class="main">
-      <section class="section">
-        <router-outlet></router-outlet>
-      </section>
-      <footer class="footer">
-        <div>Info bar</div>
-      </footer>
-    </main>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div class="fixed top-0 right-0 bottom-0 left-0 overflow-hidden">
+  <mat-drawer-container
+    class="bg-gray-000 border-r border-gray-100 min-h-full text-gray-800"
+  >
+    <mat-drawer
+      #drawer
+      class="min-h-full min-w-[320px]"
+      mode="side"
+      [opened]="true"
+    >
+      <app-drawer></app-drawer>
+    </mat-drawer>
+    <mat-drawer-content class="bg-gray-000 min-h-full">
+      <app-toolbar [drawer]="drawer"></app-toolbar>
+      <main class="main">
+        <section class="section">
+          <router-outlet></router-outlet>
+        </section>
+        <footer class="footer">
+          <div>Info bar</div>
+        </footer>
+      </main>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

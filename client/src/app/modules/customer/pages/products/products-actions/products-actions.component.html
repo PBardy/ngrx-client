@@ -1,8 +1,16 @@
-<mat-button-toggle-group value="list" (change)="onChange($event)">
-  <mat-button-toggle value="list" matTooltip="List view">
-    <mat-icon>grid_view</mat-icon>
-  </mat-button-toggle>
-  <mat-button-toggle value="table" matTooltip="Table view">
-    <mat-icon>table_rows</mat-icon>
-  </mat-button-toggle>
-</mat-button-toggle-group>
+<header class="flex items-center w-full bg-gray-100 border-b border-gray-300">
+  <div class="flex items-center w-full justify-center">
+    <div class="w-full max-w-[1280px]">
+      <div class="flex items-center justify-between py-8">
+        <div class="flex items-center gap-x-4">
+          <div class="bg-gray-300 text-gray-800 w-10 h-10 rounded">
+            <div class="flex items-center justify-center w-full h-full">
+              <mat-icon>lunch_dining</mat-icon>
+            </div>
+          </div>
+          <h3 class="font-bold text-2xl text-gray-800">Products</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

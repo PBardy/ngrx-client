@@ -34,3 +34,21 @@ export const signUpFailure = createAction(
 );
 
 export const signOutFailure = createAction('auth/sign-out/failure');
+
+export const resetPassword = createAction('auth/reset-password');
+
+export const resetPasswordSuccess = createAction('auth/reset-password/success');
+
+export const resetPasswordFailure = createAction('auth/reset-password/failure');
+
+export const updatePassword = createAction('auth/update-password');
+
+export const updatePasswordSuccess = createAction(
+  'auth/update-password/success'
+);
+
+export const updatePasswordFailure = createAction(
+  'auth/update-password/success'
+);
+
+export const forgottenPassword = createAction('auth/forgotten-password');

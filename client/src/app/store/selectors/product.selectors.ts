@@ -27,5 +27,5 @@ export const selectFilteredProducts = createSelector(
 
 export const selectProductById = (id: string) =>
   createSelector(selectAllProducts, (products) =>
-    products.filter((product) => product.uuid === id)
+    products.find((product) => product.uuid === id)
   );

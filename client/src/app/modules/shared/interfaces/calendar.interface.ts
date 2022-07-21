@@ -9,6 +9,7 @@ export enum CalendarMode {
 }
 
 export interface ICalendarControls {
+  date: FormControl<Date | null>;
   mode: FormControl<CalendarMode | null>;
 }
 

@@ -12,7 +12,7 @@ import {
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  public view = 'list';
+  public view = 'table';
 
   public readonly products$ = this.store.select(selectAllProducts);
   public readonly productsSearch$ = this.store.select(selectProductsSearch);

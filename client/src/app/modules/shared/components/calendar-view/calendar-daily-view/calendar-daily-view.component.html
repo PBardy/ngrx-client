@@ -1,1 +1,13 @@
-<p>calendar-daily-view works!</p>
+<div class="flex flex-col w-full bg-gray-100">
+  <ng-container *ngFor="let hour of hours">
+    <div
+      class="py-8 px-4 border-b cursor-pointer transition-all hover:bg-gray-200"
+      [id]="getId(hour.getHours())"
+      [class.border-gray-200]="!isCurrentHour(hour)"
+      [class.border-primary-400]="isCurrentHour(hour)"
+      [class.border-dashed]="isCurrentHour(hour)"
+    >
+      <div>{{ hour | date: "hh:ss" }}</div>
+    </div>
+  </ng-container>
+</div>

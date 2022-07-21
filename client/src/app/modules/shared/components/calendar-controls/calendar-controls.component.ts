@@ -17,9 +17,7 @@ export class CalendarControlsComponent implements OnInit {
   public readonly modes: Array<IOption<CalendarMode>> = [
     { label: 'Day View', value: CalendarMode.DAILY },
     { label: 'Week View', value: CalendarMode.WEEKLY },
-    { label: 'Fortnight View', value: CalendarMode.BIWEEKLY },
     { label: 'Month View', value: CalendarMode.MONTHLY },
-    { label: 'Bi-mothly View', value: CalendarMode.BIMONTHLY },
   ];
 
   public constructor() {}

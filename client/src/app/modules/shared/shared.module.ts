@@ -11,6 +11,7 @@ import { CalendarBiweeklyViewComponent } from './components/calendar-view/calend
 import { BimonthlyViewComponent } from './components/calendar-view/bimonthly-view/bimonthly-view.component';
 import { CalendarYearlyViewComponent } from './components/calendar-view/calendar-yearly-view/calendar-yearly-view.component';
 import { DisplayModeComponent } from './display-mode/display-mode.component';
+import { CalendarWeeklyViewComponent } from './components/calendar-view/calendar-weekly-view/calendar-weekly-view.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DisplayModeComponent } from './display-mode/display-mode.component';
     BimonthlyViewComponent,
     CalendarYearlyViewComponent,
     DisplayModeComponent,
+    CalendarWeeklyViewComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-<app-product-actions></app-product-actions>
+<app-products-actions></app-products-actions>
 
 <div class="flex justify-center">
   <div class="w-full max-w-[1280px]">
@@ -6,7 +6,9 @@
       <article class="flex flex-1">
         <ng-container [ngSwitch]="view">
           <ng-container *ngSwitchCase="'table'">
-            <app-products-table class="products-table"></app-products-table>
+            <section class="bg-gray-100 border border-gray-300 rounded w-full">
+              <app-products-table></app-products-table>
+            </section>
           </ng-container>
           <ng-container *ngSwitchCase="'list'">
             <app-products-list class="products-list"></app-products-list>

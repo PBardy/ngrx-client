@@ -4,19 +4,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Input,
   OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import {
-  IProduct,
-  ProductAvailability,
-} from '@interfaces/models/product.interface';
+import { IProduct } from '@interfaces/models/product.interface';
 import { IShoppingList } from '@interfaces/models/shopping-list.interface';
 import { IAppState } from '@interfaces/store/states.interface';
 import { Store } from '@ngrx/store';
@@ -47,7 +41,6 @@ export class ProductsTableComponent
   implements OnInit, OnDestroy, AfterViewInit
 {
   @ViewChild(MatSort, { static: true }) public sort: MatSort;
-  @ViewChild(MatPaginator, { static: true }) public paginator: MatPaginator;
 
   private readonly subscriptions = new Subscription();
 
@@ -87,7 +80,6 @@ export class ProductsTableComponent
   }
 
   public ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator;
     this.initProducts();
   }
 
