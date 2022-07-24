@@ -100,7 +100,8 @@
       (dblclick)="selection.toggle(row)"
     ></tr>
   </table>
-
-  <mat-paginator [pageSizeOptions]="pageSizes" showFirstLastButtons>
-  </mat-paginator>
 </div>
+
+<section class="flex items-center justify-end">
+  <app-paginator [pageSizeOptions]="pageSizeOptions"></app-paginator>
+</section>

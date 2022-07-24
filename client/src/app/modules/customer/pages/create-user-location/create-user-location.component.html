@@ -1,0 +1,85 @@
+<div class="flex justify-center">
+  <div class="w-full max-w-[1280px]">
+    <form
+      class="bg-gray-100 border border-gray-300 rounded my-8"
+      [formGroup]="form"
+    >
+      <header class="p-4 gap-x-2 flex items-center border-b border-gray-300">
+        <mat-icon>add</mat-icon>
+        <h4 class="font-bold">Create location</h4>
+      </header>
+      <main class="flex flex-col">
+        <section class="flex flex-col gap-y-4 p-4 pb-8">
+          <div class="flex flex-col gap-y-2">
+            <label class="font-bold">Location name</label>
+            <input
+              id="name"
+              name="name"
+              placeholder="Name"
+              formControlName="name"
+              class="border border-gray-300 bg-gray-200 rounded p-4"
+              (focus)="form.controls.name.markAsUntouched()"
+              [class.border-red-500]="
+                form.controls.name.invalid && form.controls.name.touched
+              "
+            />
+            <ng-container
+              *ngIf="form.controls.name.invalid && form.controls.name.touched"
+            >
+              <mat-error>Location name is required</mat-error>
+            </ng-container>
+          </div>
+          <div class="flex flex-col gap-y-2">
+            <label class="font-bold">Location description</label>
+            <textarea
+              id="name"
+              name="name"
+              placeholder="Description"
+              formControlName="description"
+              class="border border-gray-300 bg-gray-200 rounded p-4 resize-none"
+            ></textarea>
+          </div>
+        </section>
+        <section class="p-4 border-t border-b border-gray-300 bg-gray-200 p-4">
+          <h4 class="text-sm font-bold">Add Categories - Optional</h4>
+        </section>
+        <section class="flex flex-col gap-y-4 p-4 pb-8">
+          <p>
+            Categories allow you to create a hierachical view of your locations,
+            e.g. create you can create a category such as 'house' then add
+            subcategories such as 'kitchen', 'pantry' and then add subcategories
+            to these (e.g. 'top shelf')!
+          </p>
+          <input
+            id="categories-search"
+            name="categories-search"
+            placeholder="Categories"
+            class="border border-gray-300 bg-gray-200 rounded p-4"
+          />
+        </section>
+        <section class="p-4 border-t border-b border-gray-300 bg-gray-200 p-4">
+          <h4 class="text-sm font-bold">Add Tags - Optional</h4>
+        </section>
+        <section class="flex flex-col gap-y-4 p-4 pb-8">
+          <p>
+            Tags are similar to categories, but allow for flat, arbitrary groups
+            such as 'cold' or 'outside'. Tags are useful for general searching
+            and can be combined to help you find exactly what your looking for,
+            e.g. 'cold, inside and fancy' could be a wine cellar.
+          </p>
+          <input
+            id="tags-search"
+            name="tags-search"
+            placeholder="Tags"
+            class="border border-gray-300 bg-gray-200 rounded p-4"
+          />
+        </section>
+      </main>
+      <footer class="flex items-center justify-end p-4 bg-gray-200">
+        <button class="bg-primary-500 rounded" mat-button (click)="onSubmit()">
+          <span class="text-gray-1000 text-base px-2 py-3">Save</span>
+        </button>
+      </footer>
+    </form>
+  </div>
+</div>

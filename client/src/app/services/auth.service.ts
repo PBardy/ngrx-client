@@ -48,4 +48,10 @@ export class AuthService extends ApiService {
   public getAuthRedirect(user: IUser): string {
     return this.authRedirects[user.userType.tag];
   }
+
+  public resetPassword() {}
+
+  public updatePassword() {}
+
+  public deleteAccount() {}
 }

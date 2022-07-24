@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { AddShoppingListDialogComponent } from '../dialogs/add-shopping-list-dialog/add-shopping-list-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drawer',
@@ -8,11 +7,13 @@ import { AddShoppingListDialogComponent } from '../dialogs/add-shopping-list-dia
   styleUrls: ['./drawer.component.scss'],
 })
 export class DrawerComponent implements OnInit {
-  constructor(private readonly dialog: MatDialog) {}
+  constructor(private readonly router: Router) {}
 
   ngOnInit(): void {}
 
-  public addShoppingList(): void {
-    this.dialog.open(AddShoppingListDialogComponent);
+  public createShoppingList(): void {
+    this.router.navigate(['/user/customer/shopping-lists/create']);
   }
+
+  public createUserLocation(): void {}
 }

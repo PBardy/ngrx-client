@@ -4,6 +4,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -41,6 +42,7 @@ export class ProductsTableComponent
   implements OnInit, OnDestroy, AfterViewInit
 {
   @ViewChild(MatSort, { static: true }) public sort: MatSort;
+  @Input() public selection = new SelectionModel<IProduct>(true, []);
 
   private readonly subscriptions = new Subscription();
 
@@ -61,7 +63,6 @@ export class ProductsTableComponent
   public readonly pageSizes = [5, 10, 25, 50, 100, 500, 1000];
 
   public dataSource = new MatTableDataSource<IProduct>([]);
-  public selection = new SelectionModel<IProduct>(true, []);
 
   public constructor(
     private readonly store: Store<IAppState>,
@@ -147,4 +148,6 @@ export class ProductsTableComponent
   ): void {
     this.store.dispatch(addProductsToShoppingList({ products, shoppingList }));
   }
+
+  public alertWhenAvailable(product: IProduct): void {}
 }

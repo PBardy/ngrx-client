@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import { SelectionModel } from '@angular/cdk/collections';
+import { Component, Input, OnInit } from '@angular/core';
+import { IProduct } from '@interfaces/models/product.interface';
+import { CartService } from '@services/cart.service';
 
 @Component({
   selector: 'app-products-actions',
@@ -7,13 +9,9 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
   styleUrls: ['./products-actions.component.scss'],
 })
 export class ProductsActionsComponent implements OnInit {
-  @Output() public change = new EventEmitter<string>();
+  @Input() public selection = new SelectionModel<IProduct>(true, []);
 
-  constructor() {}
+  public constructor(public readonly cartService: CartService) {}
 
-  ngOnInit(): void {}
-
-  public onChange(event: MatButtonToggleChange): void {
-    this.change.emit(event.value);
-  }
+  public ngOnInit(): void {}
 }

@@ -1,56 +1,114 @@
-<form class="flex flex-col gap-y-8">
+<form class="flex flex-col gap-y-4">
+  <!-- Categories filters -->
   <section class="bg-gray-100 border border-gray-300 rounded-lg">
-    <div class="p-4">
-      <h4 class="font-bold">Filter by category</h4>
-    </div>
-    <mat-radio-group></mat-radio-group>
-  </section>
-  <section class="bg-gray-100 border border-gray-300 rounded-lg">
-    <div class="p-4">
-      <h4 class="font-bold">Filter by price</h4>
-    </div>
-    <mat-radio-group
-      class="flex flex-col"
-      aria-labelledby="Choose your shipping method"
-      aria-orientation="vertical"
-      formControlName="priceGroup"
+    <!-- Header -->
+    <div
+      class="flex items-center justify-between p-4 select-none cursor-pointer hover:bg-gray-200"
+      (click)="expanded.toggle('CATEGORY')"
     >
-      <mat-radio-button
-        class="p-4 transition-all hover:bg-gray-300"
-        [value]="1"
+      <h4 class="font-bold">Filter by category</h4>
+      <button mat-icon-button>
+        <mat-icon>
+          {{ expanded.isSelected("CATEGORY") ? "expand_less" : "expand_more" }}
+        </mat-icon>
+      </button>
+    </div>
+    <!-- Content -->
+    <div></div>
+  </section>
+
+  <!-- Price filters -->
+  <section class="bg-gray-100 border border-gray-300 rounded-lg">
+    <!-- Header -->
+    <div
+      class="flex items-center justify-between p-4 select-none cursor-pointer hover:bg-gray-200"
+      (click)="expanded.toggle('PRICE')"
+    >
+      <h4 class="font-bold">Filter by price</h4>
+      <button mat-icon-button>
+        <mat-icon>
+          {{ expanded.isSelected("PRICE") ? "expand_less" : "expand_more" }}
+        </mat-icon>
+      </button>
+    </div>
+    <!-- Content -->
+    <ng-container *ngIf="expanded.isSelected('PRICE')">
+      <mat-radio-group
+        class="flex flex-col"
+        aria-labelledby="Choose your shipping method"
+        aria-orientation="vertical"
+        formControlName="priceGroup"
       >
-        <div class="font-sans">~ {{ 1 | currency }}</div>
-      </mat-radio-button>
-      <mat-radio-button
-        class="p-4 transition-all hover:bg-gray-300"
-        [value]="5"
-      >
-        <div class="font-sans">~ {{ 5 | currency }}</div>
-      </mat-radio-button>
-      <mat-radio-button
-        class="p-4 transition-all hover:bg-gray-300"
-        [value]="10"
-      >
-        <div class="font-sans">~ {{ 10 | currency }}</div>
-      </mat-radio-button>
-      <mat-radio-button
-        class="p-4 transition-all hover:bg-gray-300"
-        [value]="20"
-      >
-        <div class="font-sans">~ {{ 20 | currency }}</div>
-      </mat-radio-button>
-      <mat-radio-button
-        class="p-4 transition-all hover:bg-gray-300"
-        [value]="50"
-      >
-        <div class="font-sans">~ {{ 50 | currency }}</div>
-      </mat-radio-button>
-      <mat-radio-button
-        class="p-4 transition-all hover:bg-gray-300"
-        [value]="100"
-      >
-        <div class="font-sans">~ {{ 100 | currency }}</div>
-      </mat-radio-button>
-    </mat-radio-group>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="1"
+        >
+          <div class="font-sans">~ {{ 1 | currency }}</div>
+        </mat-radio-button>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="5"
+        >
+          <div class="font-sans">~ {{ 5 | currency }}</div>
+        </mat-radio-button>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="10"
+        >
+          <div class="font-sans">~ {{ 10 | currency }}</div>
+        </mat-radio-button>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="20"
+        >
+          <div class="font-sans">~ {{ 20 | currency }}</div>
+        </mat-radio-button>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="50"
+        >
+          <div class="font-sans">~ {{ 50 | currency }}</div>
+        </mat-radio-button>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="100"
+        >
+          <div class="font-sans">~ {{ 100 | currency }}</div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </ng-container>
+  </section>
+
+  <!-- Status filters -->
+  <section class="bg-gray-100 border border-gray-300 rounded-lg">
+    <!-- Header -->
+    <div
+      class="flex items-center justify-between p-4 select-none cursor-pointer hover:bg-gray-200"
+      (click)="expanded.toggle('STATUS')"
+    >
+      <h4 class="font-bold">Filter by status</h4>
+      <button mat-icon-button>
+        <mat-icon>
+          {{ expanded.isSelected("STATUS") ? "expand_less" : "expand_more" }}
+        </mat-icon>
+      </button>
+    </div>
+    <!-- Content -->
+    <ng-container *ngIf="expanded.isSelected('STATUS')">
+      <mat-radio-group class="flex flex-col" formControlName="availability">
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="'AVAILABLE'"
+        >
+          <div class="font-sans">Available</div>
+        </mat-radio-button>
+        <mat-radio-button
+          class="p-4 transition-all hover:bg-gray-300"
+          [value]="'UNAVAILABLE'"
+        >
+          <div class="font-sans">Unavailable</div>
+        </mat-radio-button>
+      </mat-radio-group>
+    </ng-container>
   </section>
 </form>

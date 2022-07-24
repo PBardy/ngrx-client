@@ -1,9 +1,12 @@
-<ng-container *ngIf="notifications$ | async as notifications">
-  <section class="section">
-    <h4>New notifications</h4>
-    <ng-container *ngIf="notifications.length; else empty"></ng-container>
-    <ng-template #empty>
-      <app-user-notifications-empty></app-user-notifications-empty>
-    </ng-template>
-  </section>
-</ng-container>
+<div class="flex justify-center">
+  <div class="w-full max-w-[1280px]">
+    <main class="my-8">
+      <ng-container *ngIf="notifications$ | async as notifications">
+        <ng-container *ngIf="notifications.length; else empty"></ng-container>
+        <ng-template #empty>
+          <app-user-notifications-empty></app-user-notifications-empty>
+        </ng-template>
+      </ng-container>
+    </main>
+  </div>
+</div>

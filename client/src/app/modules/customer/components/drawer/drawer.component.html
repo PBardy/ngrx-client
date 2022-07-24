@@ -20,14 +20,12 @@
       </mat-list-item>
     </mat-nav-list>
     <mat-nav-list class="border-b border-gray-300 pb-2">
-      <mat-list-item
-        class="nav-list-item"
-        routerLink="/user/customer/my/shopping-lists"
-        routerLinkActive="active"
-      >
+      <mat-list-item class="nav-list-item" routerLinkActive="active">
         <mat-icon mat-list-icon>summarize</mat-icon>
-        <a class="font-sans" matLine>Shopping lists</a>
-        <button mat-icon-button (click)="addShoppingList()">
+        <a routerLink="/user/customer/my/shopping-lists" mat-line>
+          <span class="font-sans"> Shopping lists </span>
+        </a>
+        <button mat-icon-button (click)="createShoppingList()">
           <mat-icon matSuffix matTooltip="Add shopping list">add</mat-icon>
         </button>
       </mat-list-item>
@@ -41,14 +39,14 @@
         <mat-icon mat-list-icon>inventory_2</mat-icon>
         <a class="font-sans" matLine>My Products</a>
       </mat-list-item>
-      <mat-list-item
-        class="nav-list-item"
-        routerLink="/user/customer/my/locations"
-        routerLinkActive="active"
-      >
+      <mat-list-item class="nav-list-item" routerLinkActive="active">
         <mat-icon mat-list-icon>pin_drop</mat-icon>
-        <a class="font-sans" matLine>My Locations</a>
-        <mat-icon matSuffix matTooltip="Add to my locations">add</mat-icon>
+        <a class="font-sans" routerLink="/user/customer/my/locations" mat-line>
+          <span>My Locations</span>
+        </a>
+        <button mat-icon-button (click)="createUserLocation()">
+          <mat-icon matSuffix matTooltip="Add to my locations">add</mat-icon>
+        </button>
       </mat-list-item>
     </mat-nav-list>
   </nav>

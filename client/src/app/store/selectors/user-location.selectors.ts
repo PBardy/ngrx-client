@@ -7,3 +7,8 @@ const { selectAll } = userLocationsAdpater.getSelectors();
 export const selectSelf = (state: IAppState) => state.userLocations;
 
 export const selectAllUserLocations = createSelector(selectSelf, selectAll);
+
+export const selectUserLocationAutoSuggestions = createSelector(
+  selectSelf,
+  (state) => state.autoSuggestions
+);

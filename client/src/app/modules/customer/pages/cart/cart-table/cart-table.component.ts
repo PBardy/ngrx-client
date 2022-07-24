@@ -39,7 +39,7 @@ export class CartTableComponent implements OnInit, OnDestroy, AfterViewInit {
   private readonly products$ = this.store.select(selectCart);
 
   public readonly columns = ['select', 'id', 'name', 'price', 'options'];
-  public readonly pageSizes = [5, 10, 25, 50, 100, 500, 1000];
+  public readonly pageSizeOptions = [5, 10, 25, 50, 100, 500, 1000];
 
   public dataSource = new MatTableDataSource<IProduct>([]);
   public selection = new SelectionModel<IProduct>(true, []);

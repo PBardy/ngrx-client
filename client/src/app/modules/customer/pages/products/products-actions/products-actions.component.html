@@ -10,6 +10,22 @@
           </div>
           <h3 class="font-bold text-2xl text-gray-800">Products</h3>
         </div>
+        <ng-container *ngIf="selection.hasValue()">
+          <div class="flex items-center gap-x-4">
+            <button
+              mat-ripple
+              class="text-gray-1000 bg-gray-200 hover:bg-gray-300 transition-all"
+              (click)="cartService.addSelectionToCart(selection)"
+            >
+              <div class="px-6 py-3 border border-gray-300 rounded-lg">
+                <span class="text-base">Add products to cart</span>
+              </div>
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="selection.isEmpty()">
+          <div class="flex items-center gap-x-4"></div>
+        </ng-container>
       </div>
     </div>
   </div>

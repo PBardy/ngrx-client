@@ -10,16 +10,41 @@
           </div>
           <h3 class="font-bold text-2xl text-gray-800">Shopping lists</h3>
         </div>
-        <button
-          routerLink="/user/customer/shopping-lists/create"
-          class="text-gray-800 bg-gray-200 hover:bg-gray-300 transition-all"
-        >
-          <div
-            class="flex items-center gap-x-2 px-6 py-3 border border-gray-300 rounded-lg"
-          >
-            <span class="text-base">New shopping list</span>
+        <!-- Multi actions -->
+        <ng-container *ngIf="selection.hasValue(); else singleActions">
+          <div class="flex items-center gap-x-4">
+            <button
+              mat-ripple
+              class="text-gray-800 bg-gray-200 hover:bg-gray-300 transition-all"
+              (click)="shoppingListService.duplicateFromSelection(selection)"
+            >
+              <div class="px-6 py-3 border border-gray-300 rounded-lg">
+                <span class="text-base">Dupliate lists</span>
+              </div>
+            </button>
+            <button
+              mat-ripple
+              class="text-gray-1000 bg-red-400 hover:bg-red-500 transition-all"
+              (click)="shoppingListService.deleteFromSelection(selection)"
+            >
+              <div class="px-6 py-3 border border-red-500 rounded-lg">
+                <span class="text-base">Delete lists</span>
+              </div>
+            </button>
           </div>
-        </button>
+        </ng-container>
+        <!-- Single actions -->
+        <ng-template #singleActions>
+          <button
+            mat-ripple
+            routerLink="/user/customer/shopping-lists/create"
+            class="text-gray-800 bg-gray-200 hover:bg-gray-300 transition-all"
+          >
+            <div class="px-6 py-3 border border-gray-300 rounded-lg">
+              <span class="text-base">New list</span>
+            </div>
+          </button>
+        </ng-template>
       </div>
     </div>
   </div>

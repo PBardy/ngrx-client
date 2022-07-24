@@ -12,6 +12,7 @@ import { BimonthlyViewComponent } from './components/calendar-view/bimonthly-vie
 import { CalendarYearlyViewComponent } from './components/calendar-view/calendar-yearly-view/calendar-yearly-view.component';
 import { DisplayModeComponent } from './display-mode/display-mode.component';
 import { CalendarWeeklyViewComponent } from './components/calendar-view/calendar-weekly-view/calendar-weekly-view.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CalendarWeeklyViewComponent } from './components/calendar-view/calendar
     CalendarYearlyViewComponent,
     DisplayModeComponent,
     CalendarWeeklyViewComponent,
+    PaginatorComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { CalendarWeeklyViewComponent } from './components/calendar-view/calendar
     CalendarViewComponent,
     CalendarControlsComponent,
     DisplayModeComponent,
+    PaginatorComponent,
   ],
 })
 export class SharedModule {}

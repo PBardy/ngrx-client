@@ -19,8 +19,44 @@
       <button mat-icon-button routerLink="/user/customer/my/notifications">
         <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button [mat-menu-trigger-for]="menu">
         <mat-icon>more_vert</mat-icon>
+        <mat-menu class="border border-gray-300 bg-gray-100" #menu>
+          <button
+            class="text-gray-1000 min-w-[200px]"
+            mat-menu-item
+            (click)="goToMyProfile()"
+          >
+            <mat-icon class="invert" matPrefix>person</mat-icon>
+            <span mat-line class="font-sans font-bold text-base">
+              My profile
+            </span>
+          </button>
+          <button
+            class="text-gray-1000 min-w-[200px]"
+            mat-menu-item
+            (click)="goToMySettings()"
+          >
+            <mat-icon class="invert" matPrefix>settings</mat-icon>
+            <span class="font-sans font-bold text-base">My settings</span>
+          </button>
+          <button
+            class="text-gray-1000 min-w-[200px]"
+            mat-menu-item
+            (click)="goToChangeMyPreferences()"
+          >
+            <mat-icon class="invert" matPrefix>dark_mode</mat-icon>
+            <span class="font-sans font-bold text-base">Preferences</span>
+          </button>
+          <button
+            class="text-gray-1000 min-w-[200px]"
+            mat-menu-item
+            (click)="signOut()"
+          >
+            <mat-icon class="invert" matPrefix>logout</mat-icon>
+            <span class="font-sans font-bold text-base">Sign Out</span>
+          </button>
+        </mat-menu>
       </button>
     </div>
   </mat-toolbar-row>

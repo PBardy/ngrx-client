@@ -1,0 +1,11 @@
+<div class="flex items-center justify-between gap-x-4">
+  <h4>{{ data.userLocations.length }} deleted.</h4>
+  <div class="flex items-center">
+    <button mat-button (click)="undo()">
+      <span class="text-sans text-red-600">Undo</span>
+    </button>
+    <button mat-button (click)="close()">
+      <span class="text-sans text-primary-700">Close</span>
+    </button>
+  </div>
+</div>

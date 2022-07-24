@@ -17,6 +17,8 @@ import { CartComponent } from './pages/cart/cart.component';
 import { AccountComponent } from './pages/account/account.component';
 import { UpdateShoppingListComponent } from './pages/update-shopping-list/update-shopping-list.component';
 import { CreateShoppingListComponent } from './pages/create-shopping-list/create-shopping-list.component';
+import { CreateUserLocationComponent } from './pages/create-user-location/create-user-location.component';
+import { UpdateUserLocationComponent } from './pages/update-user-location/update-user-location.component';
 
 const routes: Routes = [
   {
@@ -57,9 +59,19 @@ const routes: Routes = [
             component: AccountComponent,
           },
           {
-            data: { title: 'Create shopping list' },
+            data: { title: 'Add products' },
             path: 'products',
             component: UserProductsComponent,
+          },
+          {
+            data: { title: 'Create location' },
+            path: 'locations/create',
+            component: CreateUserLocationComponent,
+          },
+          {
+            data: { title: 'Update locations' },
+            path: 'locations/:uuid/update',
+            component: UpdateUserLocationComponent,
           },
           {
             data: { title: 'Your products' },

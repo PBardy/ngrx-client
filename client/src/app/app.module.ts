@@ -35,6 +35,7 @@ import { ShoppingListItemEffects } from '@store/effects/shopping-list-item.effec
 import { notificationsReducer } from '@store/reducers/notifications.reducer';
 import { userProductsReducer } from '@store/reducers/user-product.reducer';
 import { userLocationsReducer } from '@store/reducers/user-locations.reducer';
+import { UserLocationEffects } from '@store/effects/user-locations.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -69,6 +70,7 @@ import { userLocationsReducer } from '@store/reducers/user-locations.reducer';
       ShoppingListItemEffects,
       CartEffects,
       ShippingMethodEffects,
+      UserLocationEffects,
     ]),
     HttpClientModule,
     MaterialModule,

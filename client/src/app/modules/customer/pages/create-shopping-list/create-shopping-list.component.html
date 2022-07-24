@@ -14,7 +14,15 @@
           placeholder="Shopping list name"
           formControlName="name"
           class="bg-gray-200 border border-gray-300 rounded-sm p-4"
+          [class.border-red-600]="
+            form.controls.name.invalid && form.controls.name.touched
+          "
         />
+        <ng-container
+          *ngIf="form.controls.name.invalid && form.controls.name.touched"
+        >
+          <mat-error>The shopping list name cannot be empty</mat-error>
+        </ng-container>
       </div>
       <button class="btn btn-primary" mat-ripple (click)="onSubmit()">
         <span>Create shopping list</span>

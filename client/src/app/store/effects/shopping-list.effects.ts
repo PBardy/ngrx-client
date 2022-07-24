@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ShoppingListCreatedSnackbarComponent } from '@modules/customer/components/snackbars/shopping-list-created-snackbar/shopping-list-created-snackbar.component';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ShoppingListService } from '@services/shopping-list.service';
 import {
@@ -19,7 +20,7 @@ import {
   prefetchShoppingLists,
   updateShoppingList,
 } from '@store/actions/shopping-list.actions';
-import { catchError, EMPTY, exhaustMap, from, map, switchMap } from 'rxjs';
+import { catchError, EMPTY, exhaustMap, from, map, switchMap, tap } from 'rxjs';
 import { ApiEffects } from './api.effects';
 
 @Injectable()
@@ -41,6 +42,12 @@ export class ShoppingListEffects extends ApiEffects {
       ofType(createShoppingList),
       exhaustMap(({ type, ...payload }) =>
         this.shoppingListService.createOne(payload).pipe(
+          tap((res) =>
+            this.snackbar.openFromComponent(
+              ShoppingListCreatedSnackbarComponent,
+              { data: res.data }
+            )
+          ),
           map((res) => addOneShoppingList(res.data)),
           catchError((err: HttpErrorResponse) =>
             from(this.showError(err)).pipe(switchMap(() => EMPTY))

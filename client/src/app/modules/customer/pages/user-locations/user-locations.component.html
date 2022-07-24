@@ -1,13 +1,24 @@
-<div class="flex flex-col gap-y-4">
-  <app-user-locations-actions></app-user-locations-actions>
+<div class="flex flex-col">
+  <app-user-locations-actions
+    [selection]="selection"
+  ></app-user-locations-actions>
 
   <div class="flex justify-center">
-    <div class="w-full max-w-[1280px]">
+    <div class="w-full max-w-[1280px] my-8">
       <ng-container *ngIf="userLocations$ | async as userLocations">
-        <ng-container *ngIf="userLocations.length; else empty"></ng-container>
-        <ng-template #empty>
-          <app-user-locations-empty></app-user-locations-empty>
-        </ng-template>
+        <div class="flex flex-col gap-y-4">
+          <app-user-locations-auto-suggest></app-user-locations-auto-suggest>
+          <ng-container *ngIf="userLocations.length; else empty">
+            <section class="bg-gray-100 border border-gray-300 rounded">
+              <app-user-locations-table
+                [selection]="selection"
+              ></app-user-locations-table>
+            </section>
+          </ng-container>
+          <ng-template #empty>
+            <app-user-locations-empty></app-user-locations-empty>
+          </ng-template>
+        </div>
       </ng-container>
     </div>
   </div>

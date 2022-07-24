@@ -1,0 +1,93 @@
+<table
+  class="table"
+  matSort
+  mat-table
+  matSortActive="created"
+  matSortDisableClear
+  matSortDirection="desc"
+  [dataSource]="dataSource"
+  [trackBy]="modelHelperService.trackByUuid"
+  class="w-full"
+>
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <th class="font-sans text-base" mat-header-cell *matHeaderCellDef>
+      <mat-checkbox
+        (change)="$event ? toggleAllRows() : null"
+        [checked]="selection.hasValue() && isAllSelected()"
+        [indeterminate]="selection.hasValue() && !isAllSelected()"
+      >
+      </mat-checkbox>
+    </th>
+    <td class="font-sans text-base" mat-cell *matCellDef="let row">
+      <mat-checkbox
+        (click)="$event.stopPropagation()"
+        (change)="$event ? selection.toggle(row) : null"
+        [checked]="selection.isSelected(row)"
+      >
+      </mat-checkbox>
+    </td>
+  </ng-container>
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th class="font-sans text-base" mat-header-cell *matHeaderCellDef>
+      <span class="px-8">#</span>
+    </th>
+    <td
+      class="font-sans text-base"
+      mat-cell
+      *matCellDef="let element; let i = index"
+    >
+      <span class="px-8">{{ i + 1 }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th
+      class="font-sans text-base"
+      width="100%"
+      mat-header-cell
+      mat-sort-header
+      *matHeaderCellDef
+    >
+      <span>Name</span>
+    </th>
+    <td
+      class="font-sans text-base"
+      width="100%"
+      mat-cell
+      *matCellDef="let element"
+    >
+      {{ element.location.name }}
+    </td>
+  </ng-container>
+
+  <!-- Options Column -->
+  <ng-container matColumnDef="options" stickyEnd>
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr class="bg-gray-200" mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr
+    mat-row
+    class="cursor-pointer transition-all hover:bg-gray-400"
+    *matRowDef="let row; columns: columns"
+    [class.selected]="selection.isSelected(row)"
+    (dblclick)="selection.toggle(row)"
+  ></tr>
+</table>
+
+<section class="flex items-center justify-end">
+  <app-paginator [pageSizeOptions]="pageSizeOptions"></app-paginator>
+</section>

@@ -1,0 +1,13 @@
+<mat-card
+  class="transition-all text-gray-1000 cursor-pointer shadow-none"
+  [class.bg-gray-200]="!selection.isSelected(autoSuggestion)"
+  [class.bg-primary-400]="selection.isSelected(autoSuggestion)"
+  (click)="selection.toggle(autoSuggestion)"
+>
+  <header class="flex items-center justify-between">
+    <h4>{{ autoSuggestion.name }}</h4>
+    <mat-checkbox
+      [checked]="selection.isSelected(autoSuggestion)"
+    ></mat-checkbox>
+  </header>
+</mat-card>

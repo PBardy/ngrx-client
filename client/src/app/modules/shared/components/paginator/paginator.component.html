@@ -1,0 +1,32 @@
+<div class="flex items-center gap-x-2 p-4">
+  <ng-container *ngIf="hasPreviousPage()">
+    <div
+      mat-ripple
+      class="flex items-center cursor-pointer justify-center bg-gray-200 border border-gray-300 h-12 w-12 hover:bg-gray-300 transition-all"
+      (click)="pageIndex = pageIndex - 1"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </div>
+  </ng-container>
+  <ng-container *ngFor="let page of pages; let i = index">
+    <div
+      mat-ripple
+      (click)="pageIndex = i"
+      [class.bg-primary-500]="pageIndex === i"
+      [class.text-gray-1000]="pageIndex === i"
+      [class.border-primary-600]="pageIndex === i"
+      class="flex items-center cursor-pointer justify-center bg-gray-200 border border-gray-300 h-12 w-12 hover:bg-gray-300 transition-all"
+    >
+      {{ i + 1 }}
+    </div>
+  </ng-container>
+  <ng-container *ngIf="hasNextPage()">
+    <div
+      mat-ripple
+      class="flex items-center cursor-pointer justify-center bg-gray-200 border border-gray-300 h-12 w-12 hover:bg-gray-300 transition-all"
+      (click)="pageIndex = pageIndex + 1"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </div>
+  </ng-container>
+</div>

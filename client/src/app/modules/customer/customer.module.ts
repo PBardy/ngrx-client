@@ -63,6 +63,19 @@ import { UserProfileSettingsComponent } from './pages/user-settings/user-profile
 import { UserEmailSettingsComponent } from './pages/user-settings/user-email-settings/user-email-settings.component';
 import { UserPasswordSettingsComponent } from './pages/user-settings/user-password-settings/user-password-settings.component';
 import { UserLogoutComponent } from './pages/user-settings/user-logout/user-logout.component';
+import { CreateUserLocationComponent } from './pages/create-user-location/create-user-location.component';
+import { UpdateUserLocationComponent } from './pages/update-user-location/update-user-location.component';
+import { ShoppingListCreatedSnackbarComponent } from './components/snackbars/shopping-list-created-snackbar/shopping-list-created-snackbar.component';
+import { ProductsAddedToCartSnackbarComponent } from './components/snackbars/products-added-to-cart-snackbar/products-added-to-cart-snackbar.component';
+import { UserLocationsAutoSuggestComponent } from './pages/user-locations/user-locations-auto-suggest/user-locations-auto-suggest.component';
+import { UserLocationAutoSuggestionComponent } from './pages/user-locations/user-locations-auto-suggest/user-location-auto-suggestion/user-location-auto-suggestion.component';
+import { UserLocationsTableComponent } from './pages/user-locations/user-locations-table/user-locations-table.component';
+import { DeleteUserLocationsSnackbarComponent } from './components/snackbars/delete-user-locations-snackbar/delete-user-locations-snackbar.component';
+import { DeleteUserLocationSnackbarComponent } from './components/snackbars/delete-user-location-snackbar/delete-user-location-snackbar.component';
+import { DeleteUserProductSnackbarComponent } from './components/snackbars/delete-user-product-snackbar/delete-user-product-snackbar.component';
+import { DeleteUserProductsSnackbarComponent } from './components/snackbars/delete-user-products-snackbar/delete-user-products-snackbar.component';
+import { AddUserLocationSnackbarComponent } from './components/snackbars/add-user-location-snackbar/add-user-location-snackbar.component';
+import { AddUserLocationsSnackbarComponent } from './components/snackbars/add-user-locations-snackbar/add-user-locations-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -125,6 +138,19 @@ import { UserLogoutComponent } from './pages/user-settings/user-logout/user-logo
     UserEmailSettingsComponent,
     UserPasswordSettingsComponent,
     UserLogoutComponent,
+    CreateUserLocationComponent,
+    UpdateUserLocationComponent,
+    ShoppingListCreatedSnackbarComponent,
+    ProductsAddedToCartSnackbarComponent,
+    UserLocationsAutoSuggestComponent,
+    UserLocationAutoSuggestionComponent,
+    UserLocationsTableComponent,
+    DeleteUserLocationsSnackbarComponent,
+    DeleteUserLocationSnackbarComponent,
+    DeleteUserProductSnackbarComponent,
+    DeleteUserProductsSnackbarComponent,
+    AddUserLocationSnackbarComponent,
+    AddUserLocationsSnackbarComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, CustomerRoutingModule],
 })

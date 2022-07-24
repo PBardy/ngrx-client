@@ -10,16 +10,30 @@
           </div>
           <h3 class="font-bold text-2xl text-gray-800">Your locations</h3>
         </div>
-        <button
-          id="cart-checkout__add-products"
-          class="text-gray-1000 bg-primary-400 hover:bg-primary-500 transition-all rounded-lg"
-        >
-          <div
-            class="flex items-center gap-x-2 px-6 py-3 border border-primary-500 rounded-lg"
-          >
-            <span class="text-base">Add locations</span>
-          </div>
-        </button>
+        <div class="flex items-center gap-x-4">
+          <ng-container *ngIf="selection.isEmpty()">
+            <button
+              mat-button
+              routerLink="/user/customer/my/locations/create"
+              class="rounded bg-primary-500 border border-primary-60"
+            >
+              <div class="p-2 font-sans text-lg text-gray-1000">
+                Add locations
+              </div>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="selection.hasValue()">
+            <button
+              class="rounded bg-red-500 border border-red-600"
+              mat-button
+              (click)="userLocationService.deleteFromSelection(selection)"
+            >
+              <div class="p-2 font-sans text-lg text-gray-1000">
+                Delete locations
+              </div>
+            </button>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>

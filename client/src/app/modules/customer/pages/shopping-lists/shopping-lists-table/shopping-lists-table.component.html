@@ -67,19 +67,33 @@
       <button mat-icon-button [matMenuTriggerFor]="selectAllMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #selectAllMenu>
-        <button mat-menu-item (click)="createShoppingList()">
-          <mat-icon matPrefix>add</mat-icon>
-          <span>Create shopping list</span>
-        </button>
-        <ng-container *ngIf="!selection.isEmpty()">
-          <button mat-menu-item (click)="duplicateShoppingLists()">
-            <mat-icon matPrefix>content_copy</mat-icon>
-            <span>Duplicate shopping lists</span>
+      <mat-menu class="border border-gray-300 bg-gray-100" #selectAllMenu>
+        <ng-container *ngIf="selection.isEmpty()">
+          <button mat-menu-item (click)="createShoppingList()">
+            <mat-icon class="invert" matPrefix>add</mat-icon>
+            <span class="font-sans text-base text-gray-1000">
+              Create shopping list
+            </span>
           </button>
-          <button mat-menu-item (click)="deleteShoppingLists()">
-            <mat-icon matPrefix>delete</mat-icon>
-            <span>Delete shopping lists</span>
+        </ng-container>
+        <ng-container *ngIf="selection.hasValue()">
+          <button
+            mat-menu-item
+            (click)="shoppingListService.duplicateFromSelection(selection)"
+          >
+            <mat-icon class="invert" matPrefix>content_copy</mat-icon>
+            <span class="font-sans text-base text-gray-1000">
+              Duplicate shopping lists
+            </span>
+          </button>
+          <button
+            mat-menu-item
+            (click)="shoppingListService.deleteFromSelection(selection)"
+          >
+            <mat-icon class="invert" matPrefix>delete</mat-icon>
+            <span class="font-sans text-base text-gray-1000">
+              Delete shopping lists
+            </span>
           </button>
         </ng-container>
       </mat-menu>
@@ -88,22 +102,28 @@
       <button mat-icon-button [matMenuTriggerFor]="selectItemMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #selectItemMenu>
+      <mat-menu class="border border-gray-300 bg-gray-100" #selectItemMenu>
         <button mat-menu-item (click)="addTagsToShoppingList(element)">
-          <mat-icon>add</mat-icon>
-          <span>Add tags</span>
+          <mat-icon class="invert">add</mat-icon>
+          <span class="font-sans text-base text-gray-1000">Add tags</span>
         </button>
         <button mat-menu-item (click)="duplicateShoppingList(element)">
-          <mat-icon>content_copy</mat-icon>
-          <span>Duplicate shopping list</span>
+          <mat-icon class="invert">content_copy</mat-icon>
+          <span class="font-sans text-base text-gray-1000">
+            Duplicate shopping list
+          </span>
         </button>
         <button mat-menu-item (click)="editShoppingList(element)">
-          <mat-icon>edit</mat-icon>
-          <span>Edit shopping list</span>
+          <mat-icon class="invert">edit</mat-icon>
+          <span class="font-sans text-base text-gray-1000">
+            Edit shopping list
+          </span>
         </button>
         <button mat-menu-item (click)="deleteShoppingList(element)">
-          <mat-icon>delete</mat-icon>
-          <span>Delete shopping list</span>
+          <mat-icon class="invert">delete</mat-icon>
+          <span class="font-sans text-base text-gray-1000">
+            Delete shopping list
+          </span>
         </button>
       </mat-menu>
     </td>
@@ -118,3 +138,7 @@
     (dblclick)="selection.toggle(row)"
   ></tr>
 </table>
+
+<section class="flex items-center justify-end">
+  <app-paginator [pageSizeOptions]="pageSizeOptions"></app-paginator>
+</section>

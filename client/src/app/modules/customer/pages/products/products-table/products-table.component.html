@@ -114,11 +114,31 @@
       <button mat-icon-button [matMenuTriggerFor]="selectAllMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #selectAllMenu>
-        <ng-container *ngIf="!selection.isEmpty()">
+      <mat-menu
+        class="border border-gray-300 bg-gray-100"
+        xPosition="before"
+        #selectAllMenu
+      >
+        <ng-container *ngIf="selection.hasValue()">
+          <button mat-menu-item (click)="toggleAllRows()">
+            <mat-icon class="invert">toggle_off</mat-icon>
+            <span class="font-sans font-bold text-base text-gray-1000">
+              Deselect all
+            </span>
+          </button>
           <button mat-menu-item (click)="addProductsToCart()">
-            <mat-icon>add</mat-icon>
-            <span>Add products to cart</span>
+            <mat-icon class="invert">add</mat-icon>
+            <span class="font-sans font-bold text-base text-gray-1000">
+              Add products to cart
+            </span>
+          </button>
+        </ng-container>
+        <ng-container *ngIf="selection.isEmpty()">
+          <button mat-menu-item (click)="toggleAllRows()">
+            <mat-icon class="invert">toggle_on</mat-icon>
+            <span class="font-sans font-bold text-base text-gray-1000">
+              Select all
+            </span>
           </button>
         </ng-container>
       </mat-menu>
@@ -127,35 +147,63 @@
       <button mat-icon-button [matMenuTriggerFor]="selectItemMenu">
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #selectItemMenu>
+      <mat-menu
+        class="border border-gray-300 bg-gray-100"
+        xPosition="before"
+        #selectItemMenu
+      >
         <button mat-menu-item (click)="productService.viewProduct(element)">
-          <mat-icon>visibility</mat-icon>
-          <span>View Product</span>
+          <mat-icon class="invert">visibility</mat-icon>
+          <span class="font-sans font-bold text-base text-gray-1000">
+            View Product
+          </span>
         </button>
-        <ng-container *ngIf="productService.canPurchaseProduct(element)">
+        <ng-container
+          *ngIf="
+            productService.canPurchaseProduct(element);
+            else unavailableActions
+          "
+        >
           <button mat-menu-item (click)="addProductToCart(element)">
-            <mat-icon>add</mat-icon>
-            <span>Add to cart</span>
+            <mat-icon class="invert">add</mat-icon>
+            <span class="font-sans font-bold text-base text-gray-1000">
+              Add to cart
+            </span>
           </button>
           <ng-container *ngIf="shoppingLists$ | async as shoppingLists">
             <button mat-menu-item [mat-menu-trigger-for]="shoppingListMenu">
-              <mat-icon>chevron_left</mat-icon>
-              <span>Add to shopping list</span>
-
-              <mat-menu #shoppingListMenu>
+              <mat-icon class="invert">chevron_left</mat-icon>
+              <span class="font-sans font-bold text-base text-gray-1000">
+                Add to shopping list
+              </span>
+              <mat-menu
+                class="border border-gray-300 bg-gray-100"
+                xPosition="before"
+                #shoppingListMenu
+              >
                 <ng-container *ngFor="let shoppingList of shoppingLists">
                   <button
                     mat-menu-item
                     (click)="addProductToShoppingList(shoppingList, element)"
                   >
-                    <mat-icon matPrefix>description</mat-icon>
-                    <span>{{ shoppingList.name }}</span>
+                    <mat-icon class="invert" matPrefix>description</mat-icon>
+                    <span class="font-sans font-bold text-base text-gray-1000">
+                      {{ shoppingList.name }}
+                    </span>
                   </button>
                 </ng-container>
               </mat-menu>
             </button>
           </ng-container>
         </ng-container>
+        <ng-template #unavailableActions>
+          <button mat-menu-item (click)="alertWhenAvailable(element)">
+            <mat-icon class="invert">notifications</mat-icon>
+            <span class="font-sans font-bold text-base text-gray-1000">
+              Alert me when available
+            </span>
+          </button>
+        </ng-template>
       </mat-menu>
     </td>
   </ng-container>
