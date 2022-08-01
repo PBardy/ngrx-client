@@ -12,11 +12,18 @@ import {
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { ILocation } from '@interfaces/models/location.interface';
 import { IUserLocation } from '@interfaces/models/user-location.interface';
 import { IAppState } from '@interfaces/store/states.interface';
 import { PaginatorComponent } from '@modules/shared/components/paginator/paginator.component';
 import { Store } from '@ngrx/store';
 import { ModelHelperService } from '@services/model-helper.service';
+import { UserLocationService } from '@services/user-location.service';
+import {
+  deleteUserLocation,
+  removeOneUserLocation,
+} from '@store/actions/user-locations.actions';
 import { selectAllUserLocations } from '@store/selectors/user-location.selectors';
 import { Subscription } from 'rxjs';
 
@@ -44,9 +51,11 @@ export class UserLocationsTableComponent
   public dataSource = new MatTableDataSource<IUserLocation>([]);
 
   public constructor(
+    private readonly router: Router,
     private readonly store: Store<IAppState>,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    public readonly modelHelperService: ModelHelperService
+    public readonly modelHelperService: ModelHelperService,
+    public readonly userLocationService: UserLocationService
   ) {}
 
   public ngOnInit(): void {
@@ -92,5 +101,17 @@ export class UserLocationsTableComponent
     }
 
     this.selection.select(...this.dataSource.data);
+  }
+
+  public viewUserLocation({ uuid }: ILocation): void {
+    this.router.navigate(['/user/customer/my/locations/', uuid]);
+  }
+
+  public addTags(userLocation: IUserLocation): void {}
+
+  public addSubLocation(userLocation: IUserLocation): void {}
+
+  public deleteUserLocation({ uuid }: ILocation): void {
+    this.store.dispatch(deleteUserLocation({ userLocationId: uuid }));
   }
 }

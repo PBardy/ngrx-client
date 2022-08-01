@@ -10,6 +10,15 @@
           </div>
           <h3 class="font-bold text-2xl text-gray-800">Your products</h3>
         </div>
+        <button mat-icon-button [mat-menu-trigger-for]="options">
+          <mat-icon>more_horiz</mat-icon>
+          <mat-menu
+            class="border border-gray-300 bg-gray-100"
+            xPosition="before"
+            #options
+          >
+          </mat-menu>
+        </button>
       </div>
     </div>
   </div>

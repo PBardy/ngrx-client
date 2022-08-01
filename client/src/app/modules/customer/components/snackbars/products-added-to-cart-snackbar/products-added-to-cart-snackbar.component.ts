@@ -15,14 +15,15 @@ export class ProductsAddedToCartSnackbarComponent implements OnInit {
   public constructor(
     private readonly router: Router,
     private readonly ref: MatSnackBarRef<ProductsAddedToCartSnackbarComponent>,
-    @Inject(MAT_SNACK_BAR_DATA) public readonly data: Array<IProduct>
+    @Inject(MAT_SNACK_BAR_DATA)
+    public readonly data: { products: Array<IProduct> }
   ) {}
 
   public ngOnInit(): void {}
 
   public view(): void {
     this.ref.dismissWithAction();
-    this.router.navigate(['']);
+    this.router.navigate(['/user/customer/cart']);
   }
 
   public close(): void {

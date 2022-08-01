@@ -1,14 +1,14 @@
-<div class="wrapper">
-  <div class="content">
-    <header class="header">
-      <h1>Select user type</h1>
+<div class="flex items-center justify-center min-h-[100vh] bg-gray-000">
+  <div class="w-full max-w-[800px] flex flex-col gap-y-8">
+    <header class="flex items-center justify-center">
+      <h1 class="text-gray-800 text-2xl">Select user type</h1>
     </header>
-    <article class="article">
-      <section class="tiles">
+    <article class="flex flex-col bg-gray-100 w-full rounded px-8 py-8">
+      <section class="grid grid-cols-3 w-full gap-x-8">
         <ng-container *ngIf="userTypes$ | async as userTypes">
           <ng-container *ngFor="let userType of userTypes">
             <app-landing-user-type-card
-              class="user-type-card"
+              class="flex-1"
               [userType]="userType"
               [isSelected]="selectionModel.isSelected(userType)"
               (click)="selectionModel.toggle(userType)"
@@ -18,10 +18,10 @@
       </section>
       <section class="tile-description">
         <ng-container *ngIf="selected; else default">
-          <p>{{ selected.description }}</p>
+          <p class="text-gray-800 py-8">{{ selected.description }}</p>
         </ng-container>
         <ng-template #default>
-          <p>
+          <p class="text-gray-800 py-8">
             Your user type determines what dashboard you'll see once you've
             logged in. Different user types have different permissions, admin
             and seller accounts require additional authentication before use.
@@ -29,23 +29,23 @@
         </ng-template>
       </section>
     </article>
-    <footer class="footer">
+    <footer class="flex items-center w-full gap-x-12">
       <button
         matRipple
-        class="btn btn-primary btn-pill"
+        class="bg-primary-500 rounded flex-1 px-4 py-4"
         [disabled]="!selected"
         (click)="signIn()"
       >
-        <span>Sign In</span>
+        <span class="text-base text-gray-1000">Sign In</span>
       </button>
-      <h4>or</h4>
+      <h4 class="text-gray-1000">or</h4>
       <button
         matRipple
-        class="btn btn-primary btn-pill"
+        class="bg-primary-500 rounded flex-1 px-4 py-4"
         [disabled]="!selected"
         (click)="signUp()"
       >
-        <span>Sign Up</span>
+        <span class="text-base text-gray-1000">Sign Up</span>
       </button>
     </footer>
   </div>

@@ -71,16 +71,40 @@ export class SignUpComponent implements OnInit {
 
   @HostListener('document:keypress', ['$event'])
   public autoSignUp(event: KeyboardEvent): void {
-    if (event.key.toUpperCase() !== 'D') return;
+    switch (event.key.toUpperCase()) {
+      case 'C':
+        this.form.patchValue({
+          email: 'customer@gmail.com',
+          password: 'password123',
+          firstName: 'Philip',
+          lastName: 'Bardy',
+          userType: UserRole.CUSTOMER,
+        });
 
-    this.form.patchValue({
-      email: 'example@gmail.com',
-      password: 'password123',
-      firstName: 'Philip',
-      lastName: 'Bardy',
-      userType: UserRole.CUSTOMER,
-    });
+        this.signUp();
+        break;
+      case 'S':
+        this.form.patchValue({
+          email: 'seller@gmail.com',
+          password: 'password123',
+          firstName: 'Philip',
+          lastName: 'Bardy',
+          userType: UserRole.SELLER,
+        });
 
-    this.signUp();
+        this.signUp();
+        break;
+      case 'A':
+        this.form.patchValue({
+          email: 'admin@gmail.com',
+          password: 'password123',
+          firstName: 'Philip',
+          lastName: 'Bardy',
+          userType: UserRole.ADMIN,
+        });
+
+        this.signUp();
+        break;
+    }
   }
 }

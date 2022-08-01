@@ -1,0 +1,25 @@
+<header class="bg-gray-100 border-b border-gray-300 flex justify-center">
+  <div class="w-full max-w-[1280px] py-12 flex justify-between items-center">
+    <div class="flex items-center gap-x-3">
+      <div
+        class="bg-gray-200 border border-gray-300 rounded w-10 h-10 flex items-center justify-center"
+      >
+        <mat-icon>map</mat-icon>
+      </div>
+      <h2 class="font-bold text-2xl">Locations</h2>
+    </div>
+    <button mat-icon-button [mat-menu-trigger-for]="options">
+      <mat-icon>more_horiz</mat-icon>
+      <mat-menu class="border border-gray-300 bg-gray-100" #options>
+        <button
+          class="font-sans text-base text-gray-1000"
+          mat-menu-item
+          (click)="addLocation()"
+        >
+          <mat-icon class="invert">add</mat-icon>
+          <span>Add new location</span>
+        </button>
+      </mat-menu>
+    </button>
+  </div>
+</header>

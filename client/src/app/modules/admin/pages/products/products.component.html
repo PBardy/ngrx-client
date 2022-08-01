@@ -1,0 +1,13 @@
+<ng-container *ngIf="products$ | async as products">
+  <app-products-actions [products]="products"></app-products-actions>
+  <div class="flex justify-content">
+    <div class="w-full max-w-[1280px] py-8">
+      <main class="flex flex-col">
+        <app-products-table
+          [products]="products"
+          [selection]="selection"
+        ></app-products-table>
+      </main>
+    </div>
+  </div>
+</ng-container>

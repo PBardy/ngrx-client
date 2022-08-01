@@ -1,3 +1,4 @@
+import { IUsersState } from '@store/actions/user.actions';
 import { IAuthState } from '@store/reducers/auth.reducer';
 import { ICartState } from '@store/reducers/cart.reducer';
 import { ICategoriesState } from '@store/reducers/category.reducer';
@@ -22,4 +23,5 @@ export interface IAppState {
   notifications: INotificationsState;
   userProducts: IUserProductsState;
   userLocations: IUserLocationsState;
+  users: IUsersState;
 }

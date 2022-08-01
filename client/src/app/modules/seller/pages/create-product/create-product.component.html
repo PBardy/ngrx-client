@@ -1,0 +1,79 @@
+<div class="flex justify-center">
+  <div class="w-full max-w-[1280px] my-8">
+    <form
+      class="w-full border border-gray-300 bg-gray-100 rounded"
+      [formGroup]="form"
+    >
+      <header class="p-4">
+        <h4 class="text-base font-bold">Create product</h4>
+      </header>
+      <section class="flex flex-col gap-y-4 p-4">
+        <div class="flex gap-x-8">
+          <div class="flex flex-col gap-y-2 flex-1">
+            <label class="font-bold" for="mame">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Name"
+              formControlName="name"
+              class="bg-gray-200 border border-gray-300 p-4 rounded"
+            />
+            <ng-container
+              *ngIf="form.controls.name.touched && form.controls.name.invalid"
+            >
+              <mat-error>Name is required</mat-error>
+            </ng-container>
+          </div>
+          <div class="flex flex-col gap-y-2 flex-1">
+            <label class="font-bold" for="mame">Code</label>
+            <input
+              id="code"
+              name="code"
+              type="code"
+              placeholder="Code"
+              formControlName="code"
+              class="bg-gray-200 border border-gray-300 p-4 rounded"
+            />
+            <ng-container
+              *ngIf="form.controls.code.touched && form.controls.code.invalid"
+            >
+              <mat-error>Code is required</mat-error>
+            </ng-container>
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-2">
+          <label class="font-bold" for="price">Price</label>
+          <input
+            id="price"
+            name="price"
+            type="price"
+            placeholder="Price"
+            formControlName="price"
+            class="bg-gray-200 border border-gray-300 p-4 rounded"
+          />
+          <ng-container
+            *ngIf="form.controls.price.touched && form.controls.price.invalid"
+          >
+            <mat-error>Price is required</mat-error>
+          </ng-container>
+        </div>
+        <div class="flex flex-col gap-y-2">
+          <label class="font-bold" for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Description"
+            formControlName="description"
+            class="bg-gray-200 border border-gray-300 p-4 rounded"
+          ></textarea>
+        </div>
+      </section>
+      <footer class="bg-gray-200 p-4 flex justify-end">
+        <button class="bg-primary-500 rounded" mat-button (click)="save()">
+          <span class="font-sans text-base text-gray-1000">Save</span>
+        </button>
+      </footer>
+    </form>
+  </div>
+</div>

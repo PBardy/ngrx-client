@@ -1,0 +1,55 @@
+<header class="flex items-center w-full bg-gray-100 border-b border-gray-300">
+  <div class="flex items-center w-full justify-center">
+    <div class="w-full max-w-[1280px]">
+      <div class="flex items-center justify-between py-8">
+        <div class="flex items-center gap-x-4">
+          <div class="bg-gray-300 text-gray-800 w-10 h-10 rounded">
+            <div class="flex items-center justify-center w-full h-full">
+              <mat-icon>maps</mat-icon>
+            </div>
+          </div>
+          <h3 class="font-bold text-2xl text-gray-800">
+            {{ userLocation.location.name }}
+          </h3>
+        </div>
+        <button mat-icon-button [mat-menu-trigger-for]="options">
+          <mat-icon>more_horiz</mat-icon>
+          <mat-menu
+            class="border border-gray-300 bg-gray-100"
+            xPosition="before"
+            #options
+          >
+            <button
+              class="transition-all hover:!bg-gray-300"
+              mat-menu-item
+              (click)="addUserSubLocation()"
+            >
+              <mat-icon class="invert">add</mat-icon>
+              <span class="font-sans text-base text-gray-1000">
+                Add sub-location
+              </span>
+            </button>
+            <button
+              class="transition-all hover:!bg-gray-300"
+              mat-menu-item
+              (click)="addTags()"
+            >
+              <mat-icon class="invert">add</mat-icon>
+              <span class="font-sans text-base text-gray-1000"> Add tags </span>
+            </button>
+            <button
+              class="transition-all hover:!bg-gray-300"
+              mat-menu-item
+              (click)="deleteUserLocation()"
+            >
+              <mat-icon class="invert">delete</mat-icon>
+              <span class="font-sans text-base text-gray-1000">
+                Delete location
+              </span>
+            </button>
+          </mat-menu>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

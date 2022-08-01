@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { IAppState } from '@interfaces/store/states.interface';
+import { ProductsAddedToCartSnackbarComponent } from '@modules/customer/components/snackbars/products-added-to-cart-snackbar/products-added-to-cart-snackbar.component';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { CartService } from '@services/cart.service';
@@ -19,7 +20,12 @@ export class CartEffects {
     () =>
       this.actions.pipe(
         ofType(addProductToCart),
-        tap(() => this.snackbar.open('Item was added to cart', 'Close'))
+        tap((product) =>
+          this.snackbar.openFromComponent(
+            ProductsAddedToCartSnackbarComponent,
+            { data: { products: [product] } }
+          )
+        )
       ),
     { dispatch: false }
   );
@@ -29,9 +35,9 @@ export class CartEffects {
       this.actions.pipe(
         ofType(addProductsToCart),
         tap(({ products }) =>
-          this.snackbar.open(
-            `(${products.length}) items was added to cart`,
-            'Close'
+          this.snackbar.openFromComponent(
+            ProductsAddedToCartSnackbarComponent,
+            { data: { products } }
           )
         )
       ),

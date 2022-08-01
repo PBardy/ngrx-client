@@ -8,6 +8,11 @@ export const selectSelf = (state: IAppState) => state.userLocations;
 
 export const selectAllUserLocations = createSelector(selectSelf, selectAll);
 
+export const selectUserLocationById = (userLocationId: string) =>
+  createSelector(selectAllUserLocations, (userLocations) =>
+    userLocations.find((userLocation) => userLocation.uuid === userLocationId)
+  );
+
 export const selectUserLocationAutoSuggestions = createSelector(
   selectSelf,
   (state) => state.autoSuggestions

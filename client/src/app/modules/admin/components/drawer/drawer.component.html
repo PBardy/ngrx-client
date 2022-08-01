@@ -1,0 +1,80 @@
+<header
+  class="header flex bg-gray-200 items-center px-4 text-gray-800 border-b border-gray-300 h-[65px]"
+>
+  <h2 class="font-sans font-bold text-xl">Project Name</h2>
+</header>
+<nav class="nav">
+  <mat-nav-list class="border-b border-gray-300 pb-2">
+    <mat-list-item class="!text-gray-800" routerLink="/user/admin">
+      <mat-icon mat-list-icon>dashboard</mat-icon>
+      <a class="font-sans" matLine>Dashboard</a>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-nav-list class="border-b border-gray-300 pb-2">
+    <mat-list-item class="!text-gray-800" routerLinkActive="active">
+      <mat-icon mat-list-icon>category</mat-icon>
+      <a class="font-sans" matLine routerLink="/user/admin/products">
+        Products
+      </a>
+      <mat-icon matSuffix routerLink="/user/admin/products/create">
+        add
+      </mat-icon>
+    </mat-list-item>
+    <mat-list-item class="!text-gray-800" routerLinkActive="active">
+      <mat-icon mat-list-icon>category</mat-icon>
+      <a class="font-sans" matLine routerLink="/user/admin/products/properties">
+        Product properties
+      </a>
+      <mat-icon matSuffix routerLink="/user/admin/products/properties/create">
+        add
+      </mat-icon>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-nav-list class="border-b border-gray-300 pb-2">
+    <mat-list-item class="!text-gray-800" routerLinkActive="active">
+      <mat-icon mat-list-icon>map</mat-icon>
+      <a class="font-sans" matLine routerLink="/user/admin/locations">
+        Locations
+      </a>
+      <mat-icon matSuffix routerLink="/user/admin/locations/create">
+        add
+      </mat-icon>
+    </mat-list-item>
+  </mat-nav-list>
+  <mat-nav-list class="border-b border-gray-300 pb-2">
+    <mat-list-item class="!text-gray-800" routerLinkActive="active">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <a class="font-sans" matLine routerLink="/user/admin/sellers">
+        Sellers
+      </a>
+      <mat-icon matSuffix routerLink="/user/admin/sellers/create">
+        add
+      </mat-icon>
+    </mat-list-item>
+    <mat-list-item class="!text-gray-800" routerLinkActive="active">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <a class="font-sans" matLine routerLink="/user/admin/customers">
+        Customers
+      </a>
+      <mat-icon matSuffix routerLink="/user/admin/customers/create">
+        add
+      </mat-icon>
+    </mat-list-item>
+  </mat-nav-list>
+</nav>
+<footer class="footer">
+  <button
+    class="text-gray-800"
+    mat-icon-button
+    routerLink="/user/customer/my/account"
+  >
+    <mat-icon>person</mat-icon>
+  </button>
+  <button
+    class="text-gray-800"
+    mat-icon-button
+    routerLink="/user/customer/my/settings"
+  >
+    <mat-icon>settings</mat-icon>
+  </button>
+</footer>

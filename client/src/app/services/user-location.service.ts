@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ILocation } from '@interfaces/models/location.interface';
 import { IUserLocation } from '@interfaces/models/user-location.interface';
 import { A } from '@interfaces/responses/api.response.interface';
@@ -23,6 +24,13 @@ export class UserLocationService extends ModelService<IUserLocation> {
     private readonly store: Store<IAppState>
   ) {
     super(http);
+  }
+
+  public addTags(userLocationId: string, tagIds: Array<string>) {
+    return this.http.post<A<IUserLocation>>(
+      `${this.basePath}/user/locations/${userLocationId}/tags`,
+      { tagIds }
+    );
   }
 
   public addFromSelection(selection: SelectionModel<ILocation>) {

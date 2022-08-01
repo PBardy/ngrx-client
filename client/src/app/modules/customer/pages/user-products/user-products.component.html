@@ -4,7 +4,19 @@
   <div class="flex flex-row justify-center">
     <div class="w-full max-w-[1280px]">
       <main class="flex flex-col my-4">
-        <ng-container *ngIf="userProducts.length; else empty"></ng-container>
+        <ng-container *ngIf="userProducts.length; else empty">
+          <div class="flex gap-x-8">
+            <article class="flex-1 rounded border border-gray-300">
+              <app-user-products-table
+                [selection]="selection"
+                [userProducts]="userProducts"
+              ></app-user-products-table>
+            </article>
+            <aside>
+              <app-user-products-filters></app-user-products-filters>
+            </aside>
+          </div>
+        </ng-container>
         <ng-template #empty>
           <app-user-products-empty></app-user-products-empty>
         </ng-template>

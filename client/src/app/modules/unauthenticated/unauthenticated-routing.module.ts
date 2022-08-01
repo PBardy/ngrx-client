@@ -17,7 +17,7 @@ const routes: Routes = [
       { path: 'confirm-email', component: ConfirmEmailComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'forgot-password', component: ForgotPasswordComponent },
-      { path: '', pathMatch: 'full', redirectTo: 'landing' },
+      { path: '', pathMatch: 'full', redirectTo: '/landing' },
     ],
   },
 ];

@@ -7,6 +7,8 @@ export enum ProductAvailability {
   UNAVAILABLE = 'UNAVAILABLE',
 }
 
+export interface IProductProperty extends IModel {}
+
 export interface IBaseProduct extends IModel {
   code: string;
   slug: string;
@@ -20,4 +22,5 @@ export interface IBaseProduct extends IModel {
 export interface IProduct extends IBaseProduct {
   tags?: ITag[];
   categories?: ICategory[];
+  properties?: IProductProperty;
 }

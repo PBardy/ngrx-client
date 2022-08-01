@@ -37,7 +37,16 @@ export const authReducer = createReducer<IAuthState>(
     return { ...state, error: false, message: null, loading: true };
   }),
   on(signOut, (state) => {
-    return { ...state, error: false, message: null, loading: true };
+    localStorage.removeItem('token');
+
+    return {
+      ...state,
+      user: null,
+      token: null,
+      error: false,
+      message: null,
+      loading: false,
+    };
   }),
   on(signInSuccess, (state, payload) => {
     localStorage.setItem('token', payload.token);

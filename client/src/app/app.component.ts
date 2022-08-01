@@ -48,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
           );
         }
 
-        return this.router.navigateByUrl('/sign-in');
+        return this.router.navigateByUrl('/');
       });
   }
 }

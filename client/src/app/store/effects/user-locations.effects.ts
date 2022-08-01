@@ -11,7 +11,6 @@ import {
   addOneUserLocation,
   createManyUserLocationsFromLocations,
   createUserLocation,
-  deleteManyUserLocationsFromLocations,
   deleteUserLocation,
   deleteUserLocations,
   prefetchUserLocationAutoSuggestions,

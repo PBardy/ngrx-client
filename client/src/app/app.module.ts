@@ -36,6 +36,8 @@ import { notificationsReducer } from '@store/reducers/notifications.reducer';
 import { userProductsReducer } from '@store/reducers/user-product.reducer';
 import { userLocationsReducer } from '@store/reducers/user-locations.reducer';
 import { UserLocationEffects } from '@store/effects/user-locations.effects';
+import { UserProductEffects } from '@store/effects/user-product.effects';
+import { usersReducer } from '@store/actions/user.actions';
 
 @NgModule({
   declarations: [AppComponent],
@@ -57,6 +59,7 @@ import { UserLocationEffects } from '@store/effects/user-locations.effects';
         notifications: notificationsReducer,
         userProducts: userProductsReducer,
         userLocations: userLocationsReducer,
+        users: usersReducer,
       },
       {}
     ),
@@ -71,6 +74,7 @@ import { UserLocationEffects } from '@store/effects/user-locations.effects';
       CartEffects,
       ShippingMethodEffects,
       UserLocationEffects,
+      UserProductEffects,
     ]),
     HttpClientModule,
     MaterialModule,

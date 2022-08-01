@@ -10,6 +10,7 @@ import {
   prefetchUserLocationAutoSuggestions,
   prefetchUserLocations,
 } from '@store/actions/user-locations.actions';
+import { prefetchUserProducts } from '@store/actions/user-product.actions';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,5 +28,6 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch(prefetchShippingMethods());
     this.store.dispatch(prefetchUserLocations());
     this.store.dispatch(prefetchUserLocationAutoSuggestions());
+    this.store.dispatch(prefetchUserProducts());
   }
 }

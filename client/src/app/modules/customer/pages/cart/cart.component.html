@@ -5,11 +5,9 @@
       <ng-container *ngIf="cart.length; else empty">
         <main class="main">
           <article class="article">
-            <h4>Your items</h4>
             <app-cart-table></app-cart-table>
           </article>
           <aside class="aside">
-            <h4>Checkout</h4>
             <app-cart-checkout></app-cart-checkout>
           </aside>
         </main>

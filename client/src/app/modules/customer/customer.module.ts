@@ -76,6 +76,14 @@ import { DeleteUserProductSnackbarComponent } from './components/snackbars/delet
 import { DeleteUserProductsSnackbarComponent } from './components/snackbars/delete-user-products-snackbar/delete-user-products-snackbar.component';
 import { AddUserLocationSnackbarComponent } from './components/snackbars/add-user-location-snackbar/add-user-location-snackbar.component';
 import { AddUserLocationsSnackbarComponent } from './components/snackbars/add-user-locations-snackbar/add-user-locations-snackbar.component';
+import { UserLocationActionsComponent } from './pages/user-location/user-location-actions/user-location-actions.component';
+import { UserLocationSublocationsComponent } from './pages/user-location/user-location-sublocations/user-location-sublocations.component';
+import { UserLocationInfoBannerComponent } from './pages/user-location/user-location-info-banner/user-location-info-banner.component';
+import { UserLocationProductsComponent } from './pages/user-location/user-location-products/user-location-products.component';
+import { UserLocationProductFiltersComponent } from './pages/user-location/user-location-product-filters/user-location-product-filters.component';
+import { AddUserLocationTagsComponent } from './components/bottom-sheets/add-user-location-tags/add-user-location-tags.component';
+import { UserProductsTableComponent } from './pages/user-products/user-products-table/user-products-table.component';
+import { UserProductsFiltersComponent } from './pages/user-products/user-products-filters/user-products-filters.component';
 
 @NgModule({
   declarations: [
@@ -151,6 +159,14 @@ import { AddUserLocationsSnackbarComponent } from './components/snackbars/add-us
     DeleteUserProductsSnackbarComponent,
     AddUserLocationSnackbarComponent,
     AddUserLocationsSnackbarComponent,
+    UserLocationActionsComponent,
+    UserLocationSublocationsComponent,
+    UserLocationInfoBannerComponent,
+    UserLocationProductsComponent,
+    UserLocationProductFiltersComponent,
+    AddUserLocationTagsComponent,
+    UserProductsTableComponent,
+    UserProductsFiltersComponent,
   ],
   imports: [CommonModule, MaterialModule, SharedModule, CustomerRoutingModule],
 })

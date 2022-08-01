@@ -1,1 +1,26 @@
-<p>user-location works!</p>
+<ng-container *ngIf="userLocation$ | async as userLocation">
+  <app-user-location-actions
+    [userLocation]="userLocation"
+  ></app-user-location-actions>
+
+  <div class="flex justify-center">
+    <div class="w-full max-w-[1280px] my-8">
+      <main class="flex flex-col gap-y-8">
+        <app-user-location-info-banner></app-user-location-info-banner>
+        <section class="flex gap-x-8">
+          <article class="flex-1">
+            <app-user-location-products
+              [userLocation]="userLocation"
+            ></app-user-location-products>
+          </article>
+          <aside>
+            <app-user-location-product-filters></app-user-location-product-filters>
+          </aside>
+        </section>
+        <app-user-location-sublocations
+          [userLocation]="userLocation"
+        ></app-user-location-sublocations>
+      </main>
+    </div>
+  </div>
+</ng-container>
